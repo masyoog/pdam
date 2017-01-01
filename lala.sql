@@ -2,33 +2,30 @@
 -- PostgreSQL database dump
 --
 
--- Dumped from database version 9.6.0
--- Dumped by pg_dump version 9.6.0
+-- Dumped from database version 9.4.10
+-- Dumped by pg_dump version 9.4.10
+-- Started on 2017-01-01 15:37:18 WIB
 
--- Started on 2016-08-22 07:18:48
-
---SET statement_timeout = 0;
---SET lock_timeout = 0;
---SET idle_in_transaction_session_timeout = 0;
---SET client_encoding = 'UTF8';
---SET standard_conforming_strings = on;
---SET check_function_bodies = false;
---SET client_min_messages = warning;
---SET row_security = off;
+SET statement_timeout = 0;
+SET lock_timeout = 0;
+SET client_encoding = 'UTF8';
+SET standard_conforming_strings = on;
+SET check_function_bodies = false;
+SET client_min_messages = warning;
 
 --
--- TOC entry 11 (class 2615 OID 16771)
--- Name: db_payment; Type: SCHEMA; Schema: -; Owner: -
+-- TOC entry 13 (class 2615 OID 17170)
+-- Name: dashboard; Type: SCHEMA; Schema: -; Owner: -
 --
 
-CREATE SCHEMA db_payment;
+CREATE SCHEMA dashboard;
 
 
-SET search_path = db_payment, pg_catalog;
+SET search_path = dashboard, pg_catalog;
 
 --
--- TOC entry 368 (class 1255 OID 25406)
--- Name: fn_bayar(character varying, character varying); Type: FUNCTION; Schema: db_payment; Owner: -
+-- TOC entry 356 (class 1255 OID 17171)
+-- Name: fn_bayar(character varying, character varying); Type: FUNCTION; Schema: dashboard; Owner: -
 --
 
 CREATE FUNCTION fn_bayar(_no_reff1 character varying, _no_reff2 character varying) RETURNS jsonb
@@ -85,8 +82,8 @@ END$$;
 
 
 --
--- TOC entry 366 (class 1255 OID 25415)
--- Name: fn_generate_denda(integer); Type: FUNCTION; Schema: db_payment; Owner: -
+-- TOC entry 357 (class 1255 OID 17172)
+-- Name: fn_generate_denda(integer); Type: FUNCTION; Schema: dashboard; Owner: -
 --
 
 CREATE FUNCTION fn_generate_denda(_id_pelanggan integer DEFAULT 0) RETURNS void
@@ -151,8 +148,8 @@ END$$;
 
 
 --
--- TOC entry 356 (class 1255 OID 16772)
--- Name: fn_get_periode(character varying, interval); Type: FUNCTION; Schema: db_payment; Owner: -
+-- TOC entry 358 (class 1255 OID 17173)
+-- Name: fn_get_periode(character varying, interval); Type: FUNCTION; Schema: dashboard; Owner: -
 --
 
 CREATE FUNCTION fn_get_periode(_periode character varying, _interval interval) RETURNS character varying
@@ -175,8 +172,8 @@ END$$;
 
 
 --
--- TOC entry 357 (class 1255 OID 16773)
--- Name: fn_get_tagihan(); Type: FUNCTION; Schema: db_payment; Owner: -
+-- TOC entry 359 (class 1255 OID 17174)
+-- Name: fn_get_tagihan(); Type: FUNCTION; Schema: dashboard; Owner: -
 --
 
 CREATE FUNCTION fn_get_tagihan() RETURNS SETOF record
@@ -229,8 +226,8 @@ $$;
 
 
 --
--- TOC entry 363 (class 1255 OID 16774)
--- Name: fn_qry_tagihan(); Type: FUNCTION; Schema: db_payment; Owner: -
+-- TOC entry 360 (class 1255 OID 17175)
+-- Name: fn_qry_tagihan(); Type: FUNCTION; Schema: dashboard; Owner: -
 --
 
 CREATE FUNCTION fn_qry_tagihan() RETURNS text
@@ -290,8 +287,8 @@ $$;
 
 
 --
--- TOC entry 358 (class 1255 OID 16775)
--- Name: fn_trg_grup_user_set_grup_akses(); Type: FUNCTION; Schema: db_payment; Owner: -
+-- TOC entry 361 (class 1255 OID 17176)
+-- Name: fn_trg_grup_user_set_grup_akses(); Type: FUNCTION; Schema: dashboard; Owner: -
 --
 
 CREATE FUNCTION fn_trg_grup_user_set_grup_akses() RETURNS trigger
@@ -306,8 +303,8 @@ $$;
 
 
 --
--- TOC entry 361 (class 1255 OID 16776)
--- Name: fn_trg_hitung_pemakaian(); Type: FUNCTION; Schema: db_payment; Owner: -
+-- TOC entry 362 (class 1255 OID 17177)
+-- Name: fn_trg_hitung_pemakaian(); Type: FUNCTION; Schema: dashboard; Owner: -
 --
 
 CREATE FUNCTION fn_trg_hitung_pemakaian() RETURNS trigger
@@ -429,8 +426,8 @@ END$$;
 
 
 --
--- TOC entry 359 (class 1255 OID 16777)
--- Name: fn_trg_menu_set_grup_akses(); Type: FUNCTION; Schema: db_payment; Owner: -
+-- TOC entry 363 (class 1255 OID 17178)
+-- Name: fn_trg_menu_set_grup_akses(); Type: FUNCTION; Schema: dashboard; Owner: -
 --
 
 CREATE FUNCTION fn_trg_menu_set_grup_akses() RETURNS trigger
@@ -445,8 +442,8 @@ $$;
 
 
 --
--- TOC entry 362 (class 1255 OID 17119)
--- Name: fn_trg_petugas_set_password(); Type: FUNCTION; Schema: db_payment; Owner: -
+-- TOC entry 364 (class 1255 OID 17179)
+-- Name: fn_trg_petugas_set_password(); Type: FUNCTION; Schema: dashboard; Owner: -
 --
 
 CREATE FUNCTION fn_trg_petugas_set_password() RETURNS trigger
@@ -461,8 +458,8 @@ END;$$;
 
 
 --
--- TOC entry 360 (class 1255 OID 16778)
--- Name: fn_trg_user_set_password(); Type: FUNCTION; Schema: db_payment; Owner: -
+-- TOC entry 365 (class 1255 OID 17180)
+-- Name: fn_trg_user_set_password(); Type: FUNCTION; Schema: dashboard; Owner: -
 --
 
 CREATE FUNCTION fn_trg_user_set_password() RETURNS trigger
@@ -478,8 +475,8 @@ $$;
 
 
 --
--- TOC entry 367 (class 1255 OID 25470)
--- Name: fn_trg_validate_insert_antrian(); Type: FUNCTION; Schema: db_payment; Owner: -
+-- TOC entry 366 (class 1255 OID 17181)
+-- Name: fn_trg_validate_insert_antrian(); Type: FUNCTION; Schema: dashboard; Owner: -
 --
 
 CREATE FUNCTION fn_trg_validate_insert_antrian() RETURNS trigger
@@ -504,17 +501,17 @@ END;$$;
 
 
 --
--- TOC entry 2625 (class 0 OID 0)
--- Dependencies: 367
--- Name: FUNCTION fn_trg_validate_insert_antrian(); Type: COMMENT; Schema: db_payment; Owner: -
+-- TOC entry 2657 (class 0 OID 0)
+-- Dependencies: 366
+-- Name: FUNCTION fn_trg_validate_insert_antrian(); Type: COMMENT; Schema: dashboard; Owner: -
 --
 
 COMMENT ON FUNCTION fn_trg_validate_insert_antrian() IS 'untuk mengecek apakah umur pelanggan lebih dari satu bulan berdasarkan tanggal terpasang';
 
 
 --
--- TOC entry 364 (class 1255 OID 17164)
--- Name: sch_fn_insert_sch_generate_denda(integer); Type: FUNCTION; Schema: db_payment; Owner: -
+-- TOC entry 367 (class 1255 OID 17182)
+-- Name: sch_fn_insert_sch_generate_denda(integer); Type: FUNCTION; Schema: dashboard; Owner: -
 --
 
 CREATE FUNCTION sch_fn_insert_sch_generate_denda(_max_row integer DEFAULT 100) RETURNS void
@@ -540,8 +537,8 @@ END$$;
 
 
 --
--- TOC entry 365 (class 1255 OID 25410)
--- Name: sch_fn_insert_sch_generate_tagihan(integer); Type: FUNCTION; Schema: db_payment; Owner: -
+-- TOC entry 368 (class 1255 OID 17183)
+-- Name: sch_fn_insert_sch_generate_tagihan(integer); Type: FUNCTION; Schema: dashboard; Owner: -
 --
 
 CREATE FUNCTION sch_fn_insert_sch_generate_tagihan(_max_row integer DEFAULT 5000) RETURNS void
@@ -573,8 +570,8 @@ END$$;
 
 
 --
--- TOC entry 369 (class 1255 OID 17156)
--- Name: sch_fn_process_sch_generate_tagihan(smallint); Type: FUNCTION; Schema: db_payment; Owner: -
+-- TOC entry 369 (class 1255 OID 17184)
+-- Name: sch_fn_process_sch_generate_tagihan(smallint); Type: FUNCTION; Schema: dashboard; Owner: -
 --
 
 CREATE FUNCTION sch_fn_process_sch_generate_tagihan(_max_row smallint DEFAULT 100) RETURNS void
@@ -701,8 +698,8 @@ SET default_tablespace = '';
 SET default_with_oids = false;
 
 --
--- TOC entry 228 (class 1259 OID 17101)
--- Name: area_petugas; Type: TABLE; Schema: db_payment; Owner: -
+-- TOC entry 198 (class 1259 OID 17185)
+-- Name: area_petugas; Type: TABLE; Schema: dashboard; Owner: -; Tablespace: 
 --
 
 CREATE TABLE area_petugas (
@@ -713,8 +710,8 @@ CREATE TABLE area_petugas (
 
 
 --
--- TOC entry 227 (class 1259 OID 17099)
--- Name: area_petugas_id_seq; Type: SEQUENCE; Schema: db_payment; Owner: -
+-- TOC entry 199 (class 1259 OID 17190)
+-- Name: area_petugas_id_seq; Type: SEQUENCE; Schema: dashboard; Owner: -
 --
 
 CREATE SEQUENCE area_petugas_id_seq
@@ -726,17 +723,17 @@ CREATE SEQUENCE area_petugas_id_seq
 
 
 --
--- TOC entry 2626 (class 0 OID 0)
--- Dependencies: 227
--- Name: area_petugas_id_seq; Type: SEQUENCE OWNED BY; Schema: db_payment; Owner: -
+-- TOC entry 2658 (class 0 OID 0)
+-- Dependencies: 199
+-- Name: area_petugas_id_seq; Type: SEQUENCE OWNED BY; Schema: dashboard; Owner: -
 --
 
 ALTER SEQUENCE area_petugas_id_seq OWNED BY area_petugas.id;
 
 
 --
--- TOC entry 239 (class 1259 OID 25481)
--- Name: item_pembayaran; Type: TABLE; Schema: db_payment; Owner: -
+-- TOC entry 200 (class 1259 OID 17192)
+-- Name: item_pembayaran; Type: TABLE; Schema: dashboard; Owner: -; Tablespace: 
 --
 
 CREATE TABLE item_pembayaran (
@@ -753,8 +750,8 @@ CREATE TABLE item_pembayaran (
 
 
 --
--- TOC entry 238 (class 1259 OID 25479)
--- Name: item_pembayaran_id_seq; Type: SEQUENCE; Schema: db_payment; Owner: -
+-- TOC entry 201 (class 1259 OID 17198)
+-- Name: item_pembayaran_id_seq; Type: SEQUENCE; Schema: dashboard; Owner: -
 --
 
 CREATE SEQUENCE item_pembayaran_id_seq
@@ -766,17 +763,17 @@ CREATE SEQUENCE item_pembayaran_id_seq
 
 
 --
--- TOC entry 2627 (class 0 OID 0)
--- Dependencies: 238
--- Name: item_pembayaran_id_seq; Type: SEQUENCE OWNED BY; Schema: db_payment; Owner: -
+-- TOC entry 2659 (class 0 OID 0)
+-- Dependencies: 201
+-- Name: item_pembayaran_id_seq; Type: SEQUENCE OWNED BY; Schema: dashboard; Owner: -
 --
 
 ALTER SEQUENCE item_pembayaran_id_seq OWNED BY item_pembayaran.id;
 
 
 --
--- TOC entry 193 (class 1259 OID 16779)
--- Name: item_tagihan; Type: TABLE; Schema: db_payment; Owner: -
+-- TOC entry 202 (class 1259 OID 17200)
+-- Name: item_tagihan; Type: TABLE; Schema: dashboard; Owner: -; Tablespace: 
 --
 
 CREATE TABLE item_tagihan (
@@ -792,8 +789,8 @@ CREATE TABLE item_tagihan (
 
 
 --
--- TOC entry 194 (class 1259 OID 16784)
--- Name: item_tagihan_id_seq; Type: SEQUENCE; Schema: db_payment; Owner: -
+-- TOC entry 203 (class 1259 OID 17205)
+-- Name: item_tagihan_id_seq; Type: SEQUENCE; Schema: dashboard; Owner: -
 --
 
 CREATE SEQUENCE item_tagihan_id_seq
@@ -805,17 +802,17 @@ CREATE SEQUENCE item_tagihan_id_seq
 
 
 --
--- TOC entry 2628 (class 0 OID 0)
--- Dependencies: 194
--- Name: item_tagihan_id_seq; Type: SEQUENCE OWNED BY; Schema: db_payment; Owner: -
+-- TOC entry 2660 (class 0 OID 0)
+-- Dependencies: 203
+-- Name: item_tagihan_id_seq; Type: SEQUENCE OWNED BY; Schema: dashboard; Owner: -
 --
 
 ALTER SEQUENCE item_tagihan_id_seq OWNED BY item_tagihan.id;
 
 
 --
--- TOC entry 234 (class 1259 OID 17184)
--- Name: item_tagihan_non_rutin; Type: TABLE; Schema: db_payment; Owner: -
+-- TOC entry 204 (class 1259 OID 17207)
+-- Name: item_tagihan_non_rutin; Type: TABLE; Schema: dashboard; Owner: -; Tablespace: 
 --
 
 CREATE TABLE item_tagihan_non_rutin (
@@ -831,8 +828,8 @@ CREATE TABLE item_tagihan_non_rutin (
 
 
 --
--- TOC entry 233 (class 1259 OID 17182)
--- Name: item_tagihan_non_rutin_id_seq; Type: SEQUENCE; Schema: db_payment; Owner: -
+-- TOC entry 205 (class 1259 OID 17212)
+-- Name: item_tagihan_non_rutin_id_seq; Type: SEQUENCE; Schema: dashboard; Owner: -
 --
 
 CREATE SEQUENCE item_tagihan_non_rutin_id_seq
@@ -844,17 +841,17 @@ CREATE SEQUENCE item_tagihan_non_rutin_id_seq
 
 
 --
--- TOC entry 2629 (class 0 OID 0)
--- Dependencies: 233
--- Name: item_tagihan_non_rutin_id_seq; Type: SEQUENCE OWNED BY; Schema: db_payment; Owner: -
+-- TOC entry 2661 (class 0 OID 0)
+-- Dependencies: 205
+-- Name: item_tagihan_non_rutin_id_seq; Type: SEQUENCE OWNED BY; Schema: dashboard; Owner: -
 --
 
 ALTER SEQUENCE item_tagihan_non_rutin_id_seq OWNED BY item_tagihan_non_rutin.id;
 
 
 --
--- TOC entry 224 (class 1259 OID 17056)
--- Name: mt_area; Type: TABLE; Schema: db_payment; Owner: -
+-- TOC entry 206 (class 1259 OID 17214)
+-- Name: mt_area; Type: TABLE; Schema: dashboard; Owner: -; Tablespace: 
 --
 
 CREATE TABLE mt_area (
@@ -866,8 +863,8 @@ CREATE TABLE mt_area (
 
 
 --
--- TOC entry 223 (class 1259 OID 17054)
--- Name: mt_area_id_seq; Type: SEQUENCE; Schema: db_payment; Owner: -
+-- TOC entry 207 (class 1259 OID 17218)
+-- Name: mt_area_id_seq; Type: SEQUENCE; Schema: dashboard; Owner: -
 --
 
 CREATE SEQUENCE mt_area_id_seq
@@ -879,17 +876,17 @@ CREATE SEQUENCE mt_area_id_seq
 
 
 --
--- TOC entry 2630 (class 0 OID 0)
--- Dependencies: 223
--- Name: mt_area_id_seq; Type: SEQUENCE OWNED BY; Schema: db_payment; Owner: -
+-- TOC entry 2662 (class 0 OID 0)
+-- Dependencies: 207
+-- Name: mt_area_id_seq; Type: SEQUENCE OWNED BY; Schema: dashboard; Owner: -
 --
 
 ALTER SEQUENCE mt_area_id_seq OWNED BY mt_area.id;
 
 
 --
--- TOC entry 195 (class 1259 OID 16786)
--- Name: mt_item_tarif; Type: TABLE; Schema: db_payment; Owner: -
+-- TOC entry 208 (class 1259 OID 17220)
+-- Name: mt_item_tarif; Type: TABLE; Schema: dashboard; Owner: -; Tablespace: 
 --
 
 CREATE TABLE mt_item_tarif (
@@ -904,8 +901,8 @@ CREATE TABLE mt_item_tarif (
 
 
 --
--- TOC entry 196 (class 1259 OID 16791)
--- Name: mt_item_tarif_id_seq; Type: SEQUENCE; Schema: db_payment; Owner: -
+-- TOC entry 209 (class 1259 OID 17225)
+-- Name: mt_item_tarif_id_seq; Type: SEQUENCE; Schema: dashboard; Owner: -
 --
 
 CREATE SEQUENCE mt_item_tarif_id_seq
@@ -917,17 +914,17 @@ CREATE SEQUENCE mt_item_tarif_id_seq
 
 
 --
--- TOC entry 2631 (class 0 OID 0)
--- Dependencies: 196
--- Name: mt_item_tarif_id_seq; Type: SEQUENCE OWNED BY; Schema: db_payment; Owner: -
+-- TOC entry 2663 (class 0 OID 0)
+-- Dependencies: 209
+-- Name: mt_item_tarif_id_seq; Type: SEQUENCE OWNED BY; Schema: dashboard; Owner: -
 --
 
 ALTER SEQUENCE mt_item_tarif_id_seq OWNED BY mt_item_tarif.id;
 
 
 --
--- TOC entry 197 (class 1259 OID 16793)
--- Name: mt_item_tarif_referensi; Type: TABLE; Schema: db_payment; Owner: -
+-- TOC entry 210 (class 1259 OID 17227)
+-- Name: mt_item_tarif_referensi; Type: TABLE; Schema: dashboard; Owner: -; Tablespace: 
 --
 
 CREATE TABLE mt_item_tarif_referensi (
@@ -939,8 +936,8 @@ CREATE TABLE mt_item_tarif_referensi (
 
 
 --
--- TOC entry 198 (class 1259 OID 16797)
--- Name: mt_item_tarif_referensi_id_seq; Type: SEQUENCE; Schema: db_payment; Owner: -
+-- TOC entry 211 (class 1259 OID 17231)
+-- Name: mt_item_tarif_referensi_id_seq; Type: SEQUENCE; Schema: dashboard; Owner: -
 --
 
 CREATE SEQUENCE mt_item_tarif_referensi_id_seq
@@ -952,17 +949,17 @@ CREATE SEQUENCE mt_item_tarif_referensi_id_seq
 
 
 --
--- TOC entry 2632 (class 0 OID 0)
--- Dependencies: 198
--- Name: mt_item_tarif_referensi_id_seq; Type: SEQUENCE OWNED BY; Schema: db_payment; Owner: -
+-- TOC entry 2664 (class 0 OID 0)
+-- Dependencies: 211
+-- Name: mt_item_tarif_referensi_id_seq; Type: SEQUENCE OWNED BY; Schema: dashboard; Owner: -
 --
 
 ALTER SEQUENCE mt_item_tarif_referensi_id_seq OWNED BY mt_item_tarif_referensi.id;
 
 
 --
--- TOC entry 199 (class 1259 OID 16799)
--- Name: mt_tarif; Type: TABLE; Schema: db_payment; Owner: -
+-- TOC entry 212 (class 1259 OID 17233)
+-- Name: mt_tarif; Type: TABLE; Schema: dashboard; Owner: -; Tablespace: 
 --
 
 CREATE TABLE mt_tarif (
@@ -976,8 +973,8 @@ CREATE TABLE mt_tarif (
 
 
 --
--- TOC entry 200 (class 1259 OID 16805)
--- Name: mt_tarif_id_seq; Type: SEQUENCE; Schema: db_payment; Owner: -
+-- TOC entry 213 (class 1259 OID 17239)
+-- Name: mt_tarif_id_seq; Type: SEQUENCE; Schema: dashboard; Owner: -
 --
 
 CREATE SEQUENCE mt_tarif_id_seq
@@ -989,17 +986,17 @@ CREATE SEQUENCE mt_tarif_id_seq
 
 
 --
--- TOC entry 2633 (class 0 OID 0)
--- Dependencies: 200
--- Name: mt_tarif_id_seq; Type: SEQUENCE OWNED BY; Schema: db_payment; Owner: -
+-- TOC entry 2665 (class 0 OID 0)
+-- Dependencies: 213
+-- Name: mt_tarif_id_seq; Type: SEQUENCE OWNED BY; Schema: dashboard; Owner: -
 --
 
 ALTER SEQUENCE mt_tarif_id_seq OWNED BY mt_tarif.id;
 
 
 --
--- TOC entry 201 (class 1259 OID 16807)
--- Name: mt_tipe_pelanggan; Type: TABLE; Schema: db_payment; Owner: -
+-- TOC entry 214 (class 1259 OID 17241)
+-- Name: mt_tipe_pelanggan; Type: TABLE; Schema: dashboard; Owner: -; Tablespace: 
 --
 
 CREATE TABLE mt_tipe_pelanggan (
@@ -1012,8 +1009,8 @@ CREATE TABLE mt_tipe_pelanggan (
 
 
 --
--- TOC entry 202 (class 1259 OID 16811)
--- Name: mt_tipe_pelanggan_id_seq; Type: SEQUENCE; Schema: db_payment; Owner: -
+-- TOC entry 215 (class 1259 OID 17245)
+-- Name: mt_tipe_pelanggan_id_seq; Type: SEQUENCE; Schema: dashboard; Owner: -
 --
 
 CREATE SEQUENCE mt_tipe_pelanggan_id_seq
@@ -1025,17 +1022,17 @@ CREATE SEQUENCE mt_tipe_pelanggan_id_seq
 
 
 --
--- TOC entry 2634 (class 0 OID 0)
--- Dependencies: 202
--- Name: mt_tipe_pelanggan_id_seq; Type: SEQUENCE OWNED BY; Schema: db_payment; Owner: -
+-- TOC entry 2666 (class 0 OID 0)
+-- Dependencies: 215
+-- Name: mt_tipe_pelanggan_id_seq; Type: SEQUENCE OWNED BY; Schema: dashboard; Owner: -
 --
 
 ALTER SEQUENCE mt_tipe_pelanggan_id_seq OWNED BY mt_tipe_pelanggan.id;
 
 
 --
--- TOC entry 203 (class 1259 OID 16813)
--- Name: pelanggan; Type: TABLE; Schema: db_payment; Owner: -
+-- TOC entry 216 (class 1259 OID 17247)
+-- Name: pelanggan; Type: TABLE; Schema: dashboard; Owner: -; Tablespace: 
 --
 
 CREATE TABLE pelanggan (
@@ -1055,8 +1052,8 @@ CREATE TABLE pelanggan (
 
 
 --
--- TOC entry 204 (class 1259 OID 16822)
--- Name: pelanggan_id_seq; Type: SEQUENCE; Schema: db_payment; Owner: -
+-- TOC entry 217 (class 1259 OID 17256)
+-- Name: pelanggan_id_seq; Type: SEQUENCE; Schema: dashboard; Owner: -
 --
 
 CREATE SEQUENCE pelanggan_id_seq
@@ -1068,17 +1065,17 @@ CREATE SEQUENCE pelanggan_id_seq
 
 
 --
--- TOC entry 2635 (class 0 OID 0)
--- Dependencies: 204
--- Name: pelanggan_id_seq; Type: SEQUENCE OWNED BY; Schema: db_payment; Owner: -
+-- TOC entry 2667 (class 0 OID 0)
+-- Dependencies: 217
+-- Name: pelanggan_id_seq; Type: SEQUENCE OWNED BY; Schema: dashboard; Owner: -
 --
 
 ALTER SEQUENCE pelanggan_id_seq OWNED BY pelanggan.id;
 
 
 --
--- TOC entry 205 (class 1259 OID 16824)
--- Name: pemakaian; Type: TABLE; Schema: db_payment; Owner: -
+-- TOC entry 218 (class 1259 OID 17258)
+-- Name: pemakaian; Type: TABLE; Schema: dashboard; Owner: -; Tablespace: 
 --
 
 CREATE TABLE pemakaian (
@@ -1093,8 +1090,8 @@ CREATE TABLE pemakaian (
 
 
 --
--- TOC entry 206 (class 1259 OID 16832)
--- Name: pemakaian_id_seq; Type: SEQUENCE; Schema: db_payment; Owner: -
+-- TOC entry 219 (class 1259 OID 17266)
+-- Name: pemakaian_id_seq; Type: SEQUENCE; Schema: dashboard; Owner: -
 --
 
 CREATE SEQUENCE pemakaian_id_seq
@@ -1106,17 +1103,17 @@ CREATE SEQUENCE pemakaian_id_seq
 
 
 --
--- TOC entry 2636 (class 0 OID 0)
--- Dependencies: 206
--- Name: pemakaian_id_seq; Type: SEQUENCE OWNED BY; Schema: db_payment; Owner: -
+-- TOC entry 2668 (class 0 OID 0)
+-- Dependencies: 219
+-- Name: pemakaian_id_seq; Type: SEQUENCE OWNED BY; Schema: dashboard; Owner: -
 --
 
 ALTER SEQUENCE pemakaian_id_seq OWNED BY pemakaian.id;
 
 
 --
--- TOC entry 207 (class 1259 OID 16834)
--- Name: pembayaran; Type: TABLE; Schema: db_payment; Owner: -
+-- TOC entry 220 (class 1259 OID 17268)
+-- Name: pembayaran; Type: TABLE; Schema: dashboard; Owner: -; Tablespace: 
 --
 
 CREATE TABLE pembayaran (
@@ -1130,8 +1127,8 @@ CREATE TABLE pembayaran (
 
 
 --
--- TOC entry 208 (class 1259 OID 16839)
--- Name: pembayaran_id_seq; Type: SEQUENCE; Schema: db_payment; Owner: -
+-- TOC entry 221 (class 1259 OID 17276)
+-- Name: pembayaran_id_seq; Type: SEQUENCE; Schema: dashboard; Owner: -
 --
 
 CREATE SEQUENCE pembayaran_id_seq
@@ -1143,17 +1140,17 @@ CREATE SEQUENCE pembayaran_id_seq
 
 
 --
--- TOC entry 2637 (class 0 OID 0)
--- Dependencies: 208
--- Name: pembayaran_id_seq; Type: SEQUENCE OWNED BY; Schema: db_payment; Owner: -
+-- TOC entry 2669 (class 0 OID 0)
+-- Dependencies: 221
+-- Name: pembayaran_id_seq; Type: SEQUENCE OWNED BY; Schema: dashboard; Owner: -
 --
 
 ALTER SEQUENCE pembayaran_id_seq OWNED BY pembayaran.id;
 
 
 --
--- TOC entry 226 (class 1259 OID 17088)
--- Name: petugas; Type: TABLE; Schema: db_payment; Owner: -
+-- TOC entry 222 (class 1259 OID 17278)
+-- Name: petugas; Type: TABLE; Schema: dashboard; Owner: -; Tablespace: 
 --
 
 CREATE TABLE petugas (
@@ -1169,8 +1166,8 @@ CREATE TABLE petugas (
 
 
 --
--- TOC entry 225 (class 1259 OID 17086)
--- Name: petugas_id_seq; Type: SEQUENCE; Schema: db_payment; Owner: -
+-- TOC entry 223 (class 1259 OID 17286)
+-- Name: petugas_id_seq; Type: SEQUENCE; Schema: dashboard; Owner: -
 --
 
 CREATE SEQUENCE petugas_id_seq
@@ -1182,17 +1179,17 @@ CREATE SEQUENCE petugas_id_seq
 
 
 --
--- TOC entry 2638 (class 0 OID 0)
--- Dependencies: 225
--- Name: petugas_id_seq; Type: SEQUENCE OWNED BY; Schema: db_payment; Owner: -
+-- TOC entry 2670 (class 0 OID 0)
+-- Dependencies: 223
+-- Name: petugas_id_seq; Type: SEQUENCE OWNED BY; Schema: dashboard; Owner: -
 --
 
 ALTER SEQUENCE petugas_id_seq OWNED BY petugas.id;
 
 
 --
--- TOC entry 236 (class 1259 OID 25418)
--- Name: rpt_telat; Type: TABLE; Schema: db_payment; Owner: -
+-- TOC entry 224 (class 1259 OID 17288)
+-- Name: rpt_telat; Type: TABLE; Schema: dashboard; Owner: -; Tablespace: 
 --
 
 CREATE TABLE rpt_telat (
@@ -1205,8 +1202,8 @@ CREATE TABLE rpt_telat (
 
 
 --
--- TOC entry 235 (class 1259 OID 25416)
--- Name: rpt_telat_id_seq; Type: SEQUENCE; Schema: db_payment; Owner: -
+-- TOC entry 225 (class 1259 OID 17292)
+-- Name: rpt_telat_id_seq; Type: SEQUENCE; Schema: dashboard; Owner: -
 --
 
 CREATE SEQUENCE rpt_telat_id_seq
@@ -1218,17 +1215,17 @@ CREATE SEQUENCE rpt_telat_id_seq
 
 
 --
--- TOC entry 2639 (class 0 OID 0)
--- Dependencies: 235
--- Name: rpt_telat_id_seq; Type: SEQUENCE OWNED BY; Schema: db_payment; Owner: -
+-- TOC entry 2671 (class 0 OID 0)
+-- Dependencies: 225
+-- Name: rpt_telat_id_seq; Type: SEQUENCE OWNED BY; Schema: dashboard; Owner: -
 --
 
 ALTER SEQUENCE rpt_telat_id_seq OWNED BY rpt_telat.id;
 
 
 --
--- TOC entry 232 (class 1259 OID 17167)
--- Name: sch_generate_denda; Type: TABLE; Schema: db_payment; Owner: -
+-- TOC entry 226 (class 1259 OID 17294)
+-- Name: sch_generate_denda; Type: TABLE; Schema: dashboard; Owner: -; Tablespace: 
 --
 
 CREATE TABLE sch_generate_denda (
@@ -1240,8 +1237,8 @@ CREATE TABLE sch_generate_denda (
 
 
 --
--- TOC entry 231 (class 1259 OID 17165)
--- Name: sch_generate_denda_id_seq; Type: SEQUENCE; Schema: db_payment; Owner: -
+-- TOC entry 227 (class 1259 OID 17299)
+-- Name: sch_generate_denda_id_seq; Type: SEQUENCE; Schema: dashboard; Owner: -
 --
 
 CREATE SEQUENCE sch_generate_denda_id_seq
@@ -1253,17 +1250,17 @@ CREATE SEQUENCE sch_generate_denda_id_seq
 
 
 --
--- TOC entry 2640 (class 0 OID 0)
--- Dependencies: 231
--- Name: sch_generate_denda_id_seq; Type: SEQUENCE OWNED BY; Schema: db_payment; Owner: -
+-- TOC entry 2672 (class 0 OID 0)
+-- Dependencies: 227
+-- Name: sch_generate_denda_id_seq; Type: SEQUENCE OWNED BY; Schema: dashboard; Owner: -
 --
 
 ALTER SEQUENCE sch_generate_denda_id_seq OWNED BY sch_generate_denda.id;
 
 
 --
--- TOC entry 230 (class 1259 OID 17140)
--- Name: sch_generate_tagihan; Type: TABLE; Schema: db_payment; Owner: -
+-- TOC entry 228 (class 1259 OID 17301)
+-- Name: sch_generate_tagihan; Type: TABLE; Schema: dashboard; Owner: -; Tablespace: 
 --
 
 CREATE TABLE sch_generate_tagihan (
@@ -1275,8 +1272,8 @@ CREATE TABLE sch_generate_tagihan (
 
 
 --
--- TOC entry 229 (class 1259 OID 17138)
--- Name: sch_generate_tagihan_id_seq; Type: SEQUENCE; Schema: db_payment; Owner: -
+-- TOC entry 229 (class 1259 OID 17306)
+-- Name: sch_generate_tagihan_id_seq; Type: SEQUENCE; Schema: dashboard; Owner: -
 --
 
 CREATE SEQUENCE sch_generate_tagihan_id_seq
@@ -1288,17 +1285,53 @@ CREATE SEQUENCE sch_generate_tagihan_id_seq
 
 
 --
--- TOC entry 2641 (class 0 OID 0)
+-- TOC entry 2673 (class 0 OID 0)
 -- Dependencies: 229
--- Name: sch_generate_tagihan_id_seq; Type: SEQUENCE OWNED BY; Schema: db_payment; Owner: -
+-- Name: sch_generate_tagihan_id_seq; Type: SEQUENCE OWNED BY; Schema: dashboard; Owner: -
 --
 
 ALTER SEQUENCE sch_generate_tagihan_id_seq OWNED BY sch_generate_tagihan.id;
 
 
 --
--- TOC entry 209 (class 1259 OID 16841)
--- Name: sys_config; Type: TABLE; Schema: db_payment; Owner: -
+-- TOC entry 246 (class 1259 OID 17526)
+-- Name: sync_pemakaian; Type: TABLE; Schema: dashboard; Owner: -; Tablespace: 
+--
+
+CREATE TABLE sync_pemakaian (
+    id integer NOT NULL,
+    id_petugas integer DEFAULT 0,
+    date_uploaded timestamp without time zone DEFAULT now(),
+    status smallint DEFAULT 0,
+    uploaded_data text
+);
+
+
+--
+-- TOC entry 245 (class 1259 OID 17524)
+-- Name: sync_pemakaian_id_seq; Type: SEQUENCE; Schema: dashboard; Owner: -
+--
+
+CREATE SEQUENCE sync_pemakaian_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- TOC entry 2674 (class 0 OID 0)
+-- Dependencies: 245
+-- Name: sync_pemakaian_id_seq; Type: SEQUENCE OWNED BY; Schema: dashboard; Owner: -
+--
+
+ALTER SEQUENCE sync_pemakaian_id_seq OWNED BY sync_pemakaian.id;
+
+
+--
+-- TOC entry 230 (class 1259 OID 17308)
+-- Name: sys_config; Type: TABLE; Schema: dashboard; Owner: -; Tablespace: 
 --
 
 CREATE TABLE sys_config (
@@ -1311,8 +1344,8 @@ CREATE TABLE sys_config (
 
 
 --
--- TOC entry 210 (class 1259 OID 16845)
--- Name: sys_config_id_seq; Type: SEQUENCE; Schema: db_payment; Owner: -
+-- TOC entry 231 (class 1259 OID 17312)
+-- Name: sys_config_id_seq; Type: SEQUENCE; Schema: dashboard; Owner: -
 --
 
 CREATE SEQUENCE sys_config_id_seq
@@ -1324,17 +1357,17 @@ CREATE SEQUENCE sys_config_id_seq
 
 
 --
--- TOC entry 2642 (class 0 OID 0)
--- Dependencies: 210
--- Name: sys_config_id_seq; Type: SEQUENCE OWNED BY; Schema: db_payment; Owner: -
+-- TOC entry 2675 (class 0 OID 0)
+-- Dependencies: 231
+-- Name: sys_config_id_seq; Type: SEQUENCE OWNED BY; Schema: dashboard; Owner: -
 --
 
 ALTER SEQUENCE sys_config_id_seq OWNED BY sys_config.id;
 
 
 --
--- TOC entry 211 (class 1259 OID 16847)
--- Name: sys_grup_akses; Type: TABLE; Schema: db_payment; Owner: -
+-- TOC entry 232 (class 1259 OID 17314)
+-- Name: sys_grup_akses; Type: TABLE; Schema: dashboard; Owner: -; Tablespace: 
 --
 
 CREATE TABLE sys_grup_akses (
@@ -1350,8 +1383,8 @@ CREATE TABLE sys_grup_akses (
 
 
 --
--- TOC entry 212 (class 1259 OID 16857)
--- Name: sys_grup_akses_id_seq; Type: SEQUENCE; Schema: db_payment; Owner: -
+-- TOC entry 233 (class 1259 OID 17324)
+-- Name: sys_grup_akses_id_seq; Type: SEQUENCE; Schema: dashboard; Owner: -
 --
 
 CREATE SEQUENCE sys_grup_akses_id_seq
@@ -1363,17 +1396,17 @@ CREATE SEQUENCE sys_grup_akses_id_seq
 
 
 --
--- TOC entry 2643 (class 0 OID 0)
--- Dependencies: 212
--- Name: sys_grup_akses_id_seq; Type: SEQUENCE OWNED BY; Schema: db_payment; Owner: -
+-- TOC entry 2676 (class 0 OID 0)
+-- Dependencies: 233
+-- Name: sys_grup_akses_id_seq; Type: SEQUENCE OWNED BY; Schema: dashboard; Owner: -
 --
 
 ALTER SEQUENCE sys_grup_akses_id_seq OWNED BY sys_grup_akses.id;
 
 
 --
--- TOC entry 213 (class 1259 OID 16859)
--- Name: sys_grup_user; Type: TABLE; Schema: db_payment; Owner: -
+-- TOC entry 234 (class 1259 OID 17326)
+-- Name: sys_grup_user; Type: TABLE; Schema: dashboard; Owner: -; Tablespace: 
 --
 
 CREATE TABLE sys_grup_user (
@@ -1385,8 +1418,8 @@ CREATE TABLE sys_grup_user (
 
 
 --
--- TOC entry 214 (class 1259 OID 16863)
--- Name: sys_grup_user_id_seq; Type: SEQUENCE; Schema: db_payment; Owner: -
+-- TOC entry 235 (class 1259 OID 17330)
+-- Name: sys_grup_user_id_seq; Type: SEQUENCE; Schema: dashboard; Owner: -
 --
 
 CREATE SEQUENCE sys_grup_user_id_seq
@@ -1398,17 +1431,17 @@ CREATE SEQUENCE sys_grup_user_id_seq
 
 
 --
--- TOC entry 2644 (class 0 OID 0)
--- Dependencies: 214
--- Name: sys_grup_user_id_seq; Type: SEQUENCE OWNED BY; Schema: db_payment; Owner: -
+-- TOC entry 2677 (class 0 OID 0)
+-- Dependencies: 235
+-- Name: sys_grup_user_id_seq; Type: SEQUENCE OWNED BY; Schema: dashboard; Owner: -
 --
 
 ALTER SEQUENCE sys_grup_user_id_seq OWNED BY sys_grup_user.id;
 
 
 --
--- TOC entry 215 (class 1259 OID 16865)
--- Name: sys_log; Type: TABLE; Schema: db_payment; Owner: -
+-- TOC entry 236 (class 1259 OID 17332)
+-- Name: sys_log; Type: TABLE; Schema: dashboard; Owner: -; Tablespace: 
 --
 
 CREATE TABLE sys_log (
@@ -1423,8 +1456,8 @@ CREATE TABLE sys_log (
 
 
 --
--- TOC entry 216 (class 1259 OID 16873)
--- Name: sys_log_id_seq; Type: SEQUENCE; Schema: db_payment; Owner: -
+-- TOC entry 237 (class 1259 OID 17340)
+-- Name: sys_log_id_seq; Type: SEQUENCE; Schema: dashboard; Owner: -
 --
 
 CREATE SEQUENCE sys_log_id_seq
@@ -1436,17 +1469,17 @@ CREATE SEQUENCE sys_log_id_seq
 
 
 --
--- TOC entry 2645 (class 0 OID 0)
--- Dependencies: 216
--- Name: sys_log_id_seq; Type: SEQUENCE OWNED BY; Schema: db_payment; Owner: -
+-- TOC entry 2678 (class 0 OID 0)
+-- Dependencies: 237
+-- Name: sys_log_id_seq; Type: SEQUENCE OWNED BY; Schema: dashboard; Owner: -
 --
 
 ALTER SEQUENCE sys_log_id_seq OWNED BY sys_log.id;
 
 
 --
--- TOC entry 217 (class 1259 OID 16875)
--- Name: sys_menu; Type: TABLE; Schema: db_payment; Owner: -
+-- TOC entry 238 (class 1259 OID 17342)
+-- Name: sys_menu; Type: TABLE; Schema: dashboard; Owner: -; Tablespace: 
 --
 
 CREATE TABLE sys_menu (
@@ -1461,8 +1494,8 @@ CREATE TABLE sys_menu (
 
 
 --
--- TOC entry 218 (class 1259 OID 16881)
--- Name: sys_menu_id_seq; Type: SEQUENCE; Schema: db_payment; Owner: -
+-- TOC entry 239 (class 1259 OID 17348)
+-- Name: sys_menu_id_seq; Type: SEQUENCE; Schema: dashboard; Owner: -
 --
 
 CREATE SEQUENCE sys_menu_id_seq
@@ -1474,17 +1507,17 @@ CREATE SEQUENCE sys_menu_id_seq
 
 
 --
--- TOC entry 2646 (class 0 OID 0)
--- Dependencies: 218
--- Name: sys_menu_id_seq; Type: SEQUENCE OWNED BY; Schema: db_payment; Owner: -
+-- TOC entry 2679 (class 0 OID 0)
+-- Dependencies: 239
+-- Name: sys_menu_id_seq; Type: SEQUENCE OWNED BY; Schema: dashboard; Owner: -
 --
 
 ALTER SEQUENCE sys_menu_id_seq OWNED BY sys_menu.id;
 
 
 --
--- TOC entry 219 (class 1259 OID 16883)
--- Name: sys_user; Type: TABLE; Schema: db_payment; Owner: -
+-- TOC entry 240 (class 1259 OID 17350)
+-- Name: sys_user; Type: TABLE; Schema: dashboard; Owner: -; Tablespace: 
 --
 
 CREATE TABLE sys_user (
@@ -1500,8 +1533,8 @@ CREATE TABLE sys_user (
 
 
 --
--- TOC entry 220 (class 1259 OID 16891)
--- Name: sys_user_id_seq; Type: SEQUENCE; Schema: db_payment; Owner: -
+-- TOC entry 241 (class 1259 OID 17358)
+-- Name: sys_user_id_seq; Type: SEQUENCE; Schema: dashboard; Owner: -
 --
 
 CREATE SEQUENCE sys_user_id_seq
@@ -1513,17 +1546,17 @@ CREATE SEQUENCE sys_user_id_seq
 
 
 --
--- TOC entry 2647 (class 0 OID 0)
--- Dependencies: 220
--- Name: sys_user_id_seq; Type: SEQUENCE OWNED BY; Schema: db_payment; Owner: -
+-- TOC entry 2680 (class 0 OID 0)
+-- Dependencies: 241
+-- Name: sys_user_id_seq; Type: SEQUENCE OWNED BY; Schema: dashboard; Owner: -
 --
 
 ALTER SEQUENCE sys_user_id_seq OWNED BY sys_user.id;
 
 
 --
--- TOC entry 222 (class 1259 OID 16972)
--- Name: tes; Type: TABLE; Schema: db_payment; Owner: -
+-- TOC entry 242 (class 1259 OID 17360)
+-- Name: tes; Type: TABLE; Schema: dashboard; Owner: -; Tablespace: 
 --
 
 CREATE TABLE tes (
@@ -1533,8 +1566,8 @@ CREATE TABLE tes (
 
 
 --
--- TOC entry 221 (class 1259 OID 16970)
--- Name: tes_id_seq; Type: SEQUENCE; Schema: db_payment; Owner: -
+-- TOC entry 243 (class 1259 OID 17366)
+-- Name: tes_id_seq; Type: SEQUENCE; Schema: dashboard; Owner: -
 --
 
 CREATE SEQUENCE tes_id_seq
@@ -1546,17 +1579,17 @@ CREATE SEQUENCE tes_id_seq
 
 
 --
--- TOC entry 2648 (class 0 OID 0)
--- Dependencies: 221
--- Name: tes_id_seq; Type: SEQUENCE OWNED BY; Schema: db_payment; Owner: -
+-- TOC entry 2681 (class 0 OID 0)
+-- Dependencies: 243
+-- Name: tes_id_seq; Type: SEQUENCE OWNED BY; Schema: dashboard; Owner: -
 --
 
 ALTER SEQUENCE tes_id_seq OWNED BY tes.id;
 
 
 --
--- TOC entry 237 (class 1259 OID 25440)
--- Name: v_tagihan; Type: VIEW; Schema: db_payment; Owner: -
+-- TOC entry 244 (class 1259 OID 17368)
+-- Name: v_tagihan; Type: VIEW; Schema: dashboard; Owner: -
 --
 
 CREATE VIEW v_tagihan AS
@@ -1593,286 +1626,288 @@ CREATE VIEW v_tagihan AS
 
 
 --
--- TOC entry 2367 (class 2604 OID 17104)
--- Name: area_petugas id; Type: DEFAULT; Schema: db_payment; Owner: -
+-- TOC entry 2345 (class 2604 OID 17373)
+-- Name: id; Type: DEFAULT; Schema: dashboard; Owner: -
 --
 
 ALTER TABLE ONLY area_petugas ALTER COLUMN id SET DEFAULT nextval('area_petugas_id_seq'::regclass);
 
 
 --
--- TOC entry 2381 (class 2604 OID 25484)
--- Name: item_pembayaran id; Type: DEFAULT; Schema: db_payment; Owner: -
+-- TOC entry 2349 (class 2604 OID 17374)
+-- Name: id; Type: DEFAULT; Schema: dashboard; Owner: -
 --
 
 ALTER TABLE ONLY item_pembayaran ALTER COLUMN id SET DEFAULT nextval('item_pembayaran_id_seq'::regclass);
 
 
 --
--- TOC entry 2314 (class 2604 OID 16898)
--- Name: item_tagihan id; Type: DEFAULT; Schema: db_payment; Owner: -
+-- TOC entry 2352 (class 2604 OID 17375)
+-- Name: id; Type: DEFAULT; Schema: dashboard; Owner: -
 --
 
 ALTER TABLE ONLY item_tagihan ALTER COLUMN id SET DEFAULT nextval('item_tagihan_id_seq'::regclass);
 
 
 --
--- TOC entry 2376 (class 2604 OID 17187)
--- Name: item_tagihan_non_rutin id; Type: DEFAULT; Schema: db_payment; Owner: -
+-- TOC entry 2355 (class 2604 OID 17376)
+-- Name: id; Type: DEFAULT; Schema: dashboard; Owner: -
 --
 
 ALTER TABLE ONLY item_tagihan_non_rutin ALTER COLUMN id SET DEFAULT nextval('item_tagihan_non_rutin_id_seq'::regclass);
 
 
 --
--- TOC entry 2362 (class 2604 OID 17059)
--- Name: mt_area id; Type: DEFAULT; Schema: db_payment; Owner: -
+-- TOC entry 2357 (class 2604 OID 17377)
+-- Name: id; Type: DEFAULT; Schema: dashboard; Owner: -
 --
 
 ALTER TABLE ONLY mt_area ALTER COLUMN id SET DEFAULT nextval('mt_area_id_seq'::regclass);
 
 
 --
--- TOC entry 2317 (class 2604 OID 16899)
--- Name: mt_item_tarif id; Type: DEFAULT; Schema: db_payment; Owner: -
+-- TOC entry 2360 (class 2604 OID 17378)
+-- Name: id; Type: DEFAULT; Schema: dashboard; Owner: -
 --
 
 ALTER TABLE ONLY mt_item_tarif ALTER COLUMN id SET DEFAULT nextval('mt_item_tarif_id_seq'::regclass);
 
 
 --
--- TOC entry 2319 (class 2604 OID 16900)
--- Name: mt_item_tarif_referensi id; Type: DEFAULT; Schema: db_payment; Owner: -
+-- TOC entry 2362 (class 2604 OID 17379)
+-- Name: id; Type: DEFAULT; Schema: dashboard; Owner: -
 --
 
 ALTER TABLE ONLY mt_item_tarif_referensi ALTER COLUMN id SET DEFAULT nextval('mt_item_tarif_referensi_id_seq'::regclass);
 
 
 --
--- TOC entry 2323 (class 2604 OID 16901)
--- Name: mt_tarif id; Type: DEFAULT; Schema: db_payment; Owner: -
+-- TOC entry 2366 (class 2604 OID 17380)
+-- Name: id; Type: DEFAULT; Schema: dashboard; Owner: -
 --
 
 ALTER TABLE ONLY mt_tarif ALTER COLUMN id SET DEFAULT nextval('mt_tarif_id_seq'::regclass);
 
 
 --
--- TOC entry 2325 (class 2604 OID 16902)
--- Name: mt_tipe_pelanggan id; Type: DEFAULT; Schema: db_payment; Owner: -
+-- TOC entry 2368 (class 2604 OID 17381)
+-- Name: id; Type: DEFAULT; Schema: dashboard; Owner: -
 --
 
 ALTER TABLE ONLY mt_tipe_pelanggan ALTER COLUMN id SET DEFAULT nextval('mt_tipe_pelanggan_id_seq'::regclass);
 
 
 --
--- TOC entry 2329 (class 2604 OID 16903)
--- Name: pelanggan id; Type: DEFAULT; Schema: db_payment; Owner: -
+-- TOC entry 2372 (class 2604 OID 17382)
+-- Name: id; Type: DEFAULT; Schema: dashboard; Owner: -
 --
 
 ALTER TABLE ONLY pelanggan ALTER COLUMN id SET DEFAULT nextval('pelanggan_id_seq'::regclass);
 
 
 --
--- TOC entry 2335 (class 2604 OID 16904)
--- Name: pemakaian id; Type: DEFAULT; Schema: db_payment; Owner: -
+-- TOC entry 2378 (class 2604 OID 17383)
+-- Name: id; Type: DEFAULT; Schema: dashboard; Owner: -
 --
 
 ALTER TABLE ONLY pemakaian ALTER COLUMN id SET DEFAULT nextval('pemakaian_id_seq'::regclass);
 
 
 --
--- TOC entry 2337 (class 2604 OID 16905)
--- Name: pembayaran id; Type: DEFAULT; Schema: db_payment; Owner: -
+-- TOC entry 2381 (class 2604 OID 17384)
+-- Name: id; Type: DEFAULT; Schema: dashboard; Owner: -
 --
 
 ALTER TABLE ONLY pembayaran ALTER COLUMN id SET DEFAULT nextval('pembayaran_id_seq'::regclass);
 
 
 --
--- TOC entry 2364 (class 2604 OID 17091)
--- Name: petugas id; Type: DEFAULT; Schema: db_payment; Owner: -
+-- TOC entry 2384 (class 2604 OID 17385)
+-- Name: id; Type: DEFAULT; Schema: dashboard; Owner: -
 --
 
 ALTER TABLE ONLY petugas ALTER COLUMN id SET DEFAULT nextval('petugas_id_seq'::regclass);
 
 
 --
--- TOC entry 2379 (class 2604 OID 25421)
--- Name: rpt_telat id; Type: DEFAULT; Schema: db_payment; Owner: -
+-- TOC entry 2386 (class 2604 OID 17386)
+-- Name: id; Type: DEFAULT; Schema: dashboard; Owner: -
 --
 
 ALTER TABLE ONLY rpt_telat ALTER COLUMN id SET DEFAULT nextval('rpt_telat_id_seq'::regclass);
 
 
 --
--- TOC entry 2373 (class 2604 OID 17170)
--- Name: sch_generate_denda id; Type: DEFAULT; Schema: db_payment; Owner: -
+-- TOC entry 2389 (class 2604 OID 17387)
+-- Name: id; Type: DEFAULT; Schema: dashboard; Owner: -
 --
 
 ALTER TABLE ONLY sch_generate_denda ALTER COLUMN id SET DEFAULT nextval('sch_generate_denda_id_seq'::regclass);
 
 
 --
--- TOC entry 2370 (class 2604 OID 17143)
--- Name: sch_generate_tagihan id; Type: DEFAULT; Schema: db_payment; Owner: -
+-- TOC entry 2392 (class 2604 OID 17388)
+-- Name: id; Type: DEFAULT; Schema: dashboard; Owner: -
 --
 
 ALTER TABLE ONLY sch_generate_tagihan ALTER COLUMN id SET DEFAULT nextval('sch_generate_tagihan_id_seq'::regclass);
 
 
 --
--- TOC entry 2340 (class 2604 OID 16906)
--- Name: sys_config id; Type: DEFAULT; Schema: db_payment; Owner: -
+-- TOC entry 2417 (class 2604 OID 17529)
+-- Name: id; Type: DEFAULT; Schema: dashboard; Owner: -
+--
+
+ALTER TABLE ONLY sync_pemakaian ALTER COLUMN id SET DEFAULT nextval('sync_pemakaian_id_seq'::regclass);
+
+
+--
+-- TOC entry 2394 (class 2604 OID 17389)
+-- Name: id; Type: DEFAULT; Schema: dashboard; Owner: -
 --
 
 ALTER TABLE ONLY sys_config ALTER COLUMN id SET DEFAULT nextval('sys_config_id_seq'::regclass);
 
 
 --
--- TOC entry 2348 (class 2604 OID 16907)
--- Name: sys_grup_akses id; Type: DEFAULT; Schema: db_payment; Owner: -
+-- TOC entry 2402 (class 2604 OID 17390)
+-- Name: id; Type: DEFAULT; Schema: dashboard; Owner: -
 --
 
 ALTER TABLE ONLY sys_grup_akses ALTER COLUMN id SET DEFAULT nextval('sys_grup_akses_id_seq'::regclass);
 
 
 --
--- TOC entry 2350 (class 2604 OID 16908)
--- Name: sys_grup_user id; Type: DEFAULT; Schema: db_payment; Owner: -
+-- TOC entry 2404 (class 2604 OID 17391)
+-- Name: id; Type: DEFAULT; Schema: dashboard; Owner: -
 --
 
 ALTER TABLE ONLY sys_grup_user ALTER COLUMN id SET DEFAULT nextval('sys_grup_user_id_seq'::regclass);
 
 
 --
--- TOC entry 2353 (class 2604 OID 16909)
--- Name: sys_log id; Type: DEFAULT; Schema: db_payment; Owner: -
+-- TOC entry 2407 (class 2604 OID 17392)
+-- Name: id; Type: DEFAULT; Schema: dashboard; Owner: -
 --
 
 ALTER TABLE ONLY sys_log ALTER COLUMN id SET DEFAULT nextval('sys_log_id_seq'::regclass);
 
 
 --
--- TOC entry 2357 (class 2604 OID 16910)
--- Name: sys_menu id; Type: DEFAULT; Schema: db_payment; Owner: -
+-- TOC entry 2411 (class 2604 OID 17393)
+-- Name: id; Type: DEFAULT; Schema: dashboard; Owner: -
 --
 
 ALTER TABLE ONLY sys_menu ALTER COLUMN id SET DEFAULT nextval('sys_menu_id_seq'::regclass);
 
 
 --
--- TOC entry 2360 (class 2604 OID 16911)
--- Name: sys_user id; Type: DEFAULT; Schema: db_payment; Owner: -
+-- TOC entry 2414 (class 2604 OID 17394)
+-- Name: id; Type: DEFAULT; Schema: dashboard; Owner: -
 --
 
 ALTER TABLE ONLY sys_user ALTER COLUMN id SET DEFAULT nextval('sys_user_id_seq'::regclass);
 
 
 --
--- TOC entry 2361 (class 2604 OID 16975)
--- Name: tes id; Type: DEFAULT; Schema: db_payment; Owner: -
+-- TOC entry 2415 (class 2604 OID 17395)
+-- Name: id; Type: DEFAULT; Schema: dashboard; Owner: -
 --
 
 ALTER TABLE ONLY tes ALTER COLUMN id SET DEFAULT nextval('tes_id_seq'::regclass);
 
 
 --
--- TOC entry 2610 (class 0 OID 17101)
--- Dependencies: 228
--- Data for Name: area_petugas; Type: TABLE DATA; Schema: db_payment; Owner: -
+-- TOC entry 2605 (class 0 OID 17185)
+-- Dependencies: 198
+-- Data for Name: area_petugas; Type: TABLE DATA; Schema: dashboard; Owner: -
 --
 
 INSERT INTO area_petugas (id, id_petugas, id_area) VALUES (3, 1, 1);
 
 
 --
--- TOC entry 2649 (class 0 OID 0)
--- Dependencies: 227
--- Name: area_petugas_id_seq; Type: SEQUENCE SET; Schema: db_payment; Owner: -
+-- TOC entry 2682 (class 0 OID 0)
+-- Dependencies: 199
+-- Name: area_petugas_id_seq; Type: SEQUENCE SET; Schema: dashboard; Owner: -
 --
 
 SELECT pg_catalog.setval('area_petugas_id_seq', 3, true);
 
 
 --
--- TOC entry 2620 (class 0 OID 25481)
--- Dependencies: 239
--- Data for Name: item_pembayaran; Type: TABLE DATA; Schema: db_payment; Owner: -
+-- TOC entry 2607 (class 0 OID 17192)
+-- Dependencies: 200
+-- Data for Name: item_pembayaran; Type: TABLE DATA; Schema: dashboard; Owner: -
 --
 
-INSERT INTO item_pembayaran (id, id_pembayaran, periode, id_item_tarif, dasar_hitung, tarif, nilai, id_pelanggan, deskripsi) VALUES (37, 24, '07-2016', 1, 2.00, 300.00, 600.00, 6, NULL);
-INSERT INTO item_pembayaran (id, id_pembayaran, periode, id_item_tarif, dasar_hitung, tarif, nilai, id_pelanggan, deskripsi) VALUES (38, 24, '07-2016', 1, 10.00, 250.00, 2500.00, 6, NULL);
-INSERT INTO item_pembayaran (id, id_pembayaran, periode, id_item_tarif, dasar_hitung, tarif, nilai, id_pelanggan, deskripsi) VALUES (39, 24, '07-2016', 3, 1.00, 10000.00, 10000.00, 6, NULL);
-INSERT INTO item_pembayaran (id, id_pembayaran, periode, id_item_tarif, dasar_hitung, tarif, nilai, id_pelanggan, deskripsi) VALUES (40, 24, '07-2016', 5, 1.00, 2500.00, 2500.00, 6, NULL);
-INSERT INTO item_pembayaran (id, id_pembayaran, periode, id_item_tarif, dasar_hitung, tarif, nilai, id_pelanggan, deskripsi) VALUES (41, 24, '07-2016', 7, 3100.00, 10.00, 310.00, 6, NULL);
-INSERT INTO item_pembayaran (id, id_pembayaran, periode, id_item_tarif, dasar_hitung, tarif, nilai, id_pelanggan, deskripsi) VALUES (42, 24, '07-2016', 8, 1.00, 6000.00, 6000.00, 6, NULL);
 
 
 --
--- TOC entry 2650 (class 0 OID 0)
--- Dependencies: 238
--- Name: item_pembayaran_id_seq; Type: SEQUENCE SET; Schema: db_payment; Owner: -
+-- TOC entry 2683 (class 0 OID 0)
+-- Dependencies: 201
+-- Name: item_pembayaran_id_seq; Type: SEQUENCE SET; Schema: dashboard; Owner: -
 --
 
 SELECT pg_catalog.setval('item_pembayaran_id_seq', 42, true);
 
 
 --
--- TOC entry 2575 (class 0 OID 16779)
--- Dependencies: 193
--- Data for Name: item_tagihan; Type: TABLE DATA; Schema: db_payment; Owner: -
+-- TOC entry 2609 (class 0 OID 17200)
+-- Dependencies: 202
+-- Data for Name: item_tagihan; Type: TABLE DATA; Schema: dashboard; Owner: -
 --
 
 
 
 --
--- TOC entry 2651 (class 0 OID 0)
--- Dependencies: 194
--- Name: item_tagihan_id_seq; Type: SEQUENCE SET; Schema: db_payment; Owner: -
+-- TOC entry 2684 (class 0 OID 0)
+-- Dependencies: 203
+-- Name: item_tagihan_id_seq; Type: SEQUENCE SET; Schema: dashboard; Owner: -
 --
 
 SELECT pg_catalog.setval('item_tagihan_id_seq', 417, true);
 
 
 --
--- TOC entry 2616 (class 0 OID 17184)
--- Dependencies: 234
--- Data for Name: item_tagihan_non_rutin; Type: TABLE DATA; Schema: db_payment; Owner: -
+-- TOC entry 2611 (class 0 OID 17207)
+-- Dependencies: 204
+-- Data for Name: item_tagihan_non_rutin; Type: TABLE DATA; Schema: dashboard; Owner: -
 --
 
 
 
 --
--- TOC entry 2652 (class 0 OID 0)
--- Dependencies: 233
--- Name: item_tagihan_non_rutin_id_seq; Type: SEQUENCE SET; Schema: db_payment; Owner: -
+-- TOC entry 2685 (class 0 OID 0)
+-- Dependencies: 205
+-- Name: item_tagihan_non_rutin_id_seq; Type: SEQUENCE SET; Schema: dashboard; Owner: -
 --
 
 SELECT pg_catalog.setval('item_tagihan_non_rutin_id_seq', 6, true);
 
 
 --
--- TOC entry 2606 (class 0 OID 17056)
--- Dependencies: 224
--- Data for Name: mt_area; Type: TABLE DATA; Schema: db_payment; Owner: -
+-- TOC entry 2613 (class 0 OID 17214)
+-- Dependencies: 206
+-- Data for Name: mt_area; Type: TABLE DATA; Schema: dashboard; Owner: -
 --
 
 INSERT INTO mt_area (id, kode, nama, status) VALUES (1, 'ARE', 'Asih Raya', 1);
 
 
 --
--- TOC entry 2653 (class 0 OID 0)
--- Dependencies: 223
--- Name: mt_area_id_seq; Type: SEQUENCE SET; Schema: db_payment; Owner: -
+-- TOC entry 2686 (class 0 OID 0)
+-- Dependencies: 207
+-- Name: mt_area_id_seq; Type: SEQUENCE SET; Schema: dashboard; Owner: -
 --
 
 SELECT pg_catalog.setval('mt_area_id_seq', 1, true);
 
 
 --
--- TOC entry 2577 (class 0 OID 16786)
--- Dependencies: 195
--- Data for Name: mt_item_tarif; Type: TABLE DATA; Schema: db_payment; Owner: -
+-- TOC entry 2615 (class 0 OID 17220)
+-- Dependencies: 208
+-- Data for Name: mt_item_tarif; Type: TABLE DATA; Schema: dashboard; Owner: -
 --
 
 INSERT INTO mt_item_tarif (id, kode, nama, status, is_rutin, urutan, tipe_tarif) VALUES (1, 'PPIR', 'Pemakaian Air', 1, 1, 1, 'PEMAKAIAN');
@@ -1886,36 +1921,36 @@ INSERT INTO mt_item_tarif (id, kode, nama, status, is_rutin, urutan, tipe_tarif)
 
 
 --
--- TOC entry 2654 (class 0 OID 0)
--- Dependencies: 196
--- Name: mt_item_tarif_id_seq; Type: SEQUENCE SET; Schema: db_payment; Owner: -
+-- TOC entry 2687 (class 0 OID 0)
+-- Dependencies: 209
+-- Name: mt_item_tarif_id_seq; Type: SEQUENCE SET; Schema: dashboard; Owner: -
 --
 
 SELECT pg_catalog.setval('mt_item_tarif_id_seq', 8, true);
 
 
 --
--- TOC entry 2579 (class 0 OID 16793)
--- Dependencies: 197
--- Data for Name: mt_item_tarif_referensi; Type: TABLE DATA; Schema: db_payment; Owner: -
+-- TOC entry 2617 (class 0 OID 17227)
+-- Dependencies: 210
+-- Data for Name: mt_item_tarif_referensi; Type: TABLE DATA; Schema: dashboard; Owner: -
 --
 
 INSERT INTO mt_item_tarif_referensi (id, referensi, tipe_referensi, id_item_tarif) VALUES (8, 'PPIR', 'ITEM TARIF', 7);
 
 
 --
--- TOC entry 2655 (class 0 OID 0)
--- Dependencies: 198
--- Name: mt_item_tarif_referensi_id_seq; Type: SEQUENCE SET; Schema: db_payment; Owner: -
+-- TOC entry 2688 (class 0 OID 0)
+-- Dependencies: 211
+-- Name: mt_item_tarif_referensi_id_seq; Type: SEQUENCE SET; Schema: dashboard; Owner: -
 --
 
 SELECT pg_catalog.setval('mt_item_tarif_referensi_id_seq', 8, true);
 
 
 --
--- TOC entry 2581 (class 0 OID 16799)
--- Dependencies: 199
--- Data for Name: mt_tarif; Type: TABLE DATA; Schema: db_payment; Owner: -
+-- TOC entry 2619 (class 0 OID 17233)
+-- Dependencies: 212
+-- Data for Name: mt_tarif; Type: TABLE DATA; Schema: dashboard; Owner: -
 --
 
 INSERT INTO mt_tarif (id, id_tipe_pelanggan, batas, tarif, id_item_tarif, satuan) VALUES (16, 4, 0, 2500.00, 5, '');
@@ -1932,18 +1967,18 @@ INSERT INTO mt_tarif (id, id_tipe_pelanggan, batas, tarif, id_item_tarif, satuan
 
 
 --
--- TOC entry 2656 (class 0 OID 0)
--- Dependencies: 200
--- Name: mt_tarif_id_seq; Type: SEQUENCE SET; Schema: db_payment; Owner: -
+-- TOC entry 2689 (class 0 OID 0)
+-- Dependencies: 213
+-- Name: mt_tarif_id_seq; Type: SEQUENCE SET; Schema: dashboard; Owner: -
 --
 
 SELECT pg_catalog.setval('mt_tarif_id_seq', 26, true);
 
 
 --
--- TOC entry 2583 (class 0 OID 16807)
--- Dependencies: 201
--- Data for Name: mt_tipe_pelanggan; Type: TABLE DATA; Schema: db_payment; Owner: -
+-- TOC entry 2621 (class 0 OID 17241)
+-- Dependencies: 214
+-- Data for Name: mt_tipe_pelanggan; Type: TABLE DATA; Schema: dashboard; Owner: -
 --
 
 INSERT INTO mt_tipe_pelanggan (id, nama, status, kode, deskripsi) VALUES (3, 'Sosial Umum', 1, 'A2', 'Kran Umum, MCK Umum, Tempat Ibadah');
@@ -1959,18 +1994,18 @@ INSERT INTO mt_tipe_pelanggan (id, nama, status, kode, deskripsi) VALUES (4, 'So
 
 
 --
--- TOC entry 2657 (class 0 OID 0)
--- Dependencies: 202
--- Name: mt_tipe_pelanggan_id_seq; Type: SEQUENCE SET; Schema: db_payment; Owner: -
+-- TOC entry 2690 (class 0 OID 0)
+-- Dependencies: 215
+-- Name: mt_tipe_pelanggan_id_seq; Type: SEQUENCE SET; Schema: dashboard; Owner: -
 --
 
 SELECT pg_catalog.setval('mt_tipe_pelanggan_id_seq', 12, true);
 
 
 --
--- TOC entry 2585 (class 0 OID 16813)
--- Dependencies: 203
--- Data for Name: pelanggan; Type: TABLE DATA; Schema: db_payment; Owner: -
+-- TOC entry 2623 (class 0 OID 17247)
+-- Dependencies: 216
+-- Data for Name: pelanggan; Type: TABLE DATA; Schema: dashboard; Owner: -
 --
 
 INSERT INTO pelanggan (id, no_reff1, no_reff2, nama, alamat, no_hp, email, tanggal_registrasi, status, id_tipe_pelanggan, tanggal_terpasang, id_area) VALUES (6, '0001010102', '0001010102', 'Pelanggan Khusus 2', 'Alamat palsu', '098889898', '', '2016-06-11', 1, 4, '2016-06-20', 1);
@@ -1978,129 +2013,140 @@ INSERT INTO pelanggan (id, no_reff1, no_reff2, nama, alamat, no_hp, email, tangg
 
 
 --
--- TOC entry 2658 (class 0 OID 0)
--- Dependencies: 204
--- Name: pelanggan_id_seq; Type: SEQUENCE SET; Schema: db_payment; Owner: -
+-- TOC entry 2691 (class 0 OID 0)
+-- Dependencies: 217
+-- Name: pelanggan_id_seq; Type: SEQUENCE SET; Schema: dashboard; Owner: -
 --
 
 SELECT pg_catalog.setval('pelanggan_id_seq', 7, true);
 
 
 --
--- TOC entry 2587 (class 0 OID 16824)
--- Dependencies: 205
--- Data for Name: pemakaian; Type: TABLE DATA; Schema: db_payment; Owner: -
+-- TOC entry 2625 (class 0 OID 17258)
+-- Dependencies: 218
+-- Data for Name: pemakaian; Type: TABLE DATA; Schema: dashboard; Owner: -
 --
 
-INSERT INTO pemakaian (id, id_pelanggan, periode, meter_awal, meter_akhir, jumlah_meter, status) VALUES (25, 5, '09-2016', 0.00, 26.00, 26.00, 0);
-INSERT INTO pemakaian (id, id_pelanggan, periode, meter_awal, meter_akhir, jumlah_meter, status) VALUES (26, 5, '10-2016', 26.00, 45.00, 19.00, 0);
-INSERT INTO pemakaian (id, id_pelanggan, periode, meter_awal, meter_akhir, jumlah_meter, status) VALUES (27, 6, '07-2016', 0.00, 12.00, 12.00, 0);
-INSERT INTO pemakaian (id, id_pelanggan, periode, meter_awal, meter_akhir, jumlah_meter, status) VALUES (28, 6, '08-2016', 12.00, 32.00, 20.00, 0);
-INSERT INTO pemakaian (id, id_pelanggan, periode, meter_awal, meter_akhir, jumlah_meter, status) VALUES (30, 6, '09-2016', 32.00, 45.00, 13.00, 0);
-INSERT INTO pemakaian (id, id_pelanggan, periode, meter_awal, meter_akhir, jumlah_meter, status) VALUES (31, 6, '10-2016', 45.00, 56.00, 11.00, 0);
+INSERT INTO pemakaian (id, id_pelanggan, periode, meter_awal, meter_akhir, jumlah_meter, status) VALUES (33, 6, '10-2016', 0.00, 12.00, 12.00, 0);
 
 
 --
--- TOC entry 2659 (class 0 OID 0)
--- Dependencies: 206
--- Name: pemakaian_id_seq; Type: SEQUENCE SET; Schema: db_payment; Owner: -
+-- TOC entry 2692 (class 0 OID 0)
+-- Dependencies: 219
+-- Name: pemakaian_id_seq; Type: SEQUENCE SET; Schema: dashboard; Owner: -
 --
 
-SELECT pg_catalog.setval('pemakaian_id_seq', 32, true);
-
-
---
--- TOC entry 2589 (class 0 OID 16834)
--- Dependencies: 207
--- Data for Name: pembayaran; Type: TABLE DATA; Schema: db_payment; Owner: -
---
-
-INSERT INTO pembayaran (id, id_pelanggan, jumlah, jumlah_tagihan, item_tagihan, tanggal_bayar) VALUES (24, 6, 21910.00, 1, '[{"1": 3100.00, "2": 0.00, "3": 10000.00, "4": 0.00, "5": 2500.00, "6": 0.00, "7": 310.00, "8": 6000.00, "total": 21910.00, "periode": "07-2016", "id_pelanggan": 6}]', '2016-08-22 07:01:49.603625');
+SELECT pg_catalog.setval('pemakaian_id_seq', 33, true);
 
 
 --
--- TOC entry 2660 (class 0 OID 0)
--- Dependencies: 208
--- Name: pembayaran_id_seq; Type: SEQUENCE SET; Schema: db_payment; Owner: -
+-- TOC entry 2627 (class 0 OID 17268)
+-- Dependencies: 220
+-- Data for Name: pembayaran; Type: TABLE DATA; Schema: dashboard; Owner: -
+--
+
+
+
+--
+-- TOC entry 2693 (class 0 OID 0)
+-- Dependencies: 221
+-- Name: pembayaran_id_seq; Type: SEQUENCE SET; Schema: dashboard; Owner: -
 --
 
 SELECT pg_catalog.setval('pembayaran_id_seq', 24, true);
 
 
 --
--- TOC entry 2608 (class 0 OID 17088)
--- Dependencies: 226
--- Data for Name: petugas; Type: TABLE DATA; Schema: db_payment; Owner: -
+-- TOC entry 2629 (class 0 OID 17278)
+-- Dependencies: 222
+-- Data for Name: petugas; Type: TABLE DATA; Schema: dashboard; Owner: -
 --
 
-INSERT INTO petugas (id, kode, nama, username, userpassword, is_forcelogin, status, nohp) VALUES (1, NULL, 'Petugas Catat 1', 'catat1', '$1$VpVywEIr$tsMXoj1xwed0S3LD8R076.', 0, 1, '081616166');
+INSERT INTO petugas (id, kode, nama, username, userpassword, is_forcelogin, status, nohp) VALUES (1, NULL, 'Petugas Catat 1', 'catat1', '$1$EI7OU8oi$5MKoJTqR.8gRnxbs1ejGJ/', 0, 1, '081616166');
 
 
 --
--- TOC entry 2661 (class 0 OID 0)
--- Dependencies: 225
--- Name: petugas_id_seq; Type: SEQUENCE SET; Schema: db_payment; Owner: -
+-- TOC entry 2694 (class 0 OID 0)
+-- Dependencies: 223
+-- Name: petugas_id_seq; Type: SEQUENCE SET; Schema: dashboard; Owner: -
 --
 
 SELECT pg_catalog.setval('petugas_id_seq', 2, true);
 
 
 --
--- TOC entry 2618 (class 0 OID 25418)
--- Dependencies: 236
--- Data for Name: rpt_telat; Type: TABLE DATA; Schema: db_payment; Owner: -
+-- TOC entry 2631 (class 0 OID 17288)
+-- Dependencies: 224
+-- Data for Name: rpt_telat; Type: TABLE DATA; Schema: dashboard; Owner: -
 --
 
 
 
 --
--- TOC entry 2662 (class 0 OID 0)
--- Dependencies: 235
--- Name: rpt_telat_id_seq; Type: SEQUENCE SET; Schema: db_payment; Owner: -
+-- TOC entry 2695 (class 0 OID 0)
+-- Dependencies: 225
+-- Name: rpt_telat_id_seq; Type: SEQUENCE SET; Schema: dashboard; Owner: -
 --
 
 SELECT pg_catalog.setval('rpt_telat_id_seq', 6, true);
 
 
 --
--- TOC entry 2614 (class 0 OID 17167)
--- Dependencies: 232
--- Data for Name: sch_generate_denda; Type: TABLE DATA; Schema: db_payment; Owner: -
+-- TOC entry 2633 (class 0 OID 17294)
+-- Dependencies: 226
+-- Data for Name: sch_generate_denda; Type: TABLE DATA; Schema: dashboard; Owner: -
 --
 
 
 
 --
--- TOC entry 2663 (class 0 OID 0)
--- Dependencies: 231
--- Name: sch_generate_denda_id_seq; Type: SEQUENCE SET; Schema: db_payment; Owner: -
+-- TOC entry 2696 (class 0 OID 0)
+-- Dependencies: 227
+-- Name: sch_generate_denda_id_seq; Type: SEQUENCE SET; Schema: dashboard; Owner: -
 --
 
 SELECT pg_catalog.setval('sch_generate_denda_id_seq', 2, true);
 
 
 --
--- TOC entry 2612 (class 0 OID 17140)
--- Dependencies: 230
--- Data for Name: sch_generate_tagihan; Type: TABLE DATA; Schema: db_payment; Owner: -
+-- TOC entry 2635 (class 0 OID 17301)
+-- Dependencies: 228
+-- Data for Name: sch_generate_tagihan; Type: TABLE DATA; Schema: dashboard; Owner: -
 --
 
 INSERT INTO sch_generate_tagihan (id, id_pelanggan, periode, status) VALUES (26, 6, '07-2016', 1);
 
 
 --
--- TOC entry 2664 (class 0 OID 0)
+-- TOC entry 2697 (class 0 OID 0)
 -- Dependencies: 229
--- Name: sch_generate_tagihan_id_seq; Type: SEQUENCE SET; Schema: db_payment; Owner: -
+-- Name: sch_generate_tagihan_id_seq; Type: SEQUENCE SET; Schema: dashboard; Owner: -
 --
 
 SELECT pg_catalog.setval('sch_generate_tagihan_id_seq', 26, true);
 
 
 --
--- TOC entry 2591 (class 0 OID 16841)
--- Dependencies: 209
--- Data for Name: sys_config; Type: TABLE DATA; Schema: db_payment; Owner: -
+-- TOC entry 2652 (class 0 OID 17526)
+-- Dependencies: 246
+-- Data for Name: sync_pemakaian; Type: TABLE DATA; Schema: dashboard; Owner: -
+--
+
+
+
+--
+-- TOC entry 2698 (class 0 OID 0)
+-- Dependencies: 245
+-- Name: sync_pemakaian_id_seq; Type: SEQUENCE SET; Schema: dashboard; Owner: -
+--
+
+SELECT pg_catalog.setval('sync_pemakaian_id_seq', 1, false);
+
+
+--
+-- TOC entry 2637 (class 0 OID 17308)
+-- Dependencies: 230
+-- Data for Name: sys_config; Type: TABLE DATA; Schema: dashboard; Owner: -
 --
 
 INSERT INTO sys_config (id, tipe, nama, nilai, status) VALUES (3, 'UPL_USR', 'max_size', '200', 1);
@@ -2116,18 +2162,18 @@ INSERT INTO sys_config (id, tipe, nama, nilai, status) VALUES (10, 'TANGGAL', 'J
 
 
 --
--- TOC entry 2665 (class 0 OID 0)
--- Dependencies: 210
--- Name: sys_config_id_seq; Type: SEQUENCE SET; Schema: db_payment; Owner: -
+-- TOC entry 2699 (class 0 OID 0)
+-- Dependencies: 231
+-- Name: sys_config_id_seq; Type: SEQUENCE SET; Schema: dashboard; Owner: -
 --
 
 SELECT pg_catalog.setval('sys_config_id_seq', 13, true);
 
 
 --
--- TOC entry 2593 (class 0 OID 16847)
--- Dependencies: 211
--- Data for Name: sys_grup_akses; Type: TABLE DATA; Schema: db_payment; Owner: -
+-- TOC entry 2639 (class 0 OID 17314)
+-- Dependencies: 232
+-- Data for Name: sys_grup_akses; Type: TABLE DATA; Schema: dashboard; Owner: -
 --
 
 INSERT INTO sys_grup_akses (id, id_grup_user, id_menu, baca, tambah, ubah, hapus, cetak) VALUES (232, 4, 43, 1, 1, 1, 1, 1);
@@ -2183,18 +2229,18 @@ INSERT INTO sys_grup_akses (id, id_grup_user, id_menu, baca, tambah, ubah, hapus
 
 
 --
--- TOC entry 2666 (class 0 OID 0)
--- Dependencies: 212
--- Name: sys_grup_akses_id_seq; Type: SEQUENCE SET; Schema: db_payment; Owner: -
+-- TOC entry 2700 (class 0 OID 0)
+-- Dependencies: 233
+-- Name: sys_grup_akses_id_seq; Type: SEQUENCE SET; Schema: dashboard; Owner: -
 --
 
 SELECT pg_catalog.setval('sys_grup_akses_id_seq', 298, true);
 
 
 --
--- TOC entry 2595 (class 0 OID 16859)
--- Dependencies: 213
--- Data for Name: sys_grup_user; Type: TABLE DATA; Schema: db_payment; Owner: -
+-- TOC entry 2641 (class 0 OID 17326)
+-- Dependencies: 234
+-- Data for Name: sys_grup_user; Type: TABLE DATA; Schema: dashboard; Owner: -
 --
 
 INSERT INTO sys_grup_user (id, nama, keterangan, status) VALUES (4, 'Administrator', '-', 1);
@@ -2202,38 +2248,38 @@ INSERT INTO sys_grup_user (id, nama, keterangan, status) VALUES (8, 'Super Admin
 
 
 --
--- TOC entry 2667 (class 0 OID 0)
--- Dependencies: 214
--- Name: sys_grup_user_id_seq; Type: SEQUENCE SET; Schema: db_payment; Owner: -
+-- TOC entry 2701 (class 0 OID 0)
+-- Dependencies: 235
+-- Name: sys_grup_user_id_seq; Type: SEQUENCE SET; Schema: dashboard; Owner: -
 --
 
 SELECT pg_catalog.setval('sys_grup_user_id_seq', 10, true);
 
 
 --
--- TOC entry 2597 (class 0 OID 16865)
--- Dependencies: 215
--- Data for Name: sys_log; Type: TABLE DATA; Schema: db_payment; Owner: -
+-- TOC entry 2643 (class 0 OID 17332)
+-- Dependencies: 236
+-- Data for Name: sys_log; Type: TABLE DATA; Schema: dashboard; Owner: -
 --
 
 
 
 --
--- TOC entry 2668 (class 0 OID 0)
--- Dependencies: 216
--- Name: sys_log_id_seq; Type: SEQUENCE SET; Schema: db_payment; Owner: -
+-- TOC entry 2702 (class 0 OID 0)
+-- Dependencies: 237
+-- Name: sys_log_id_seq; Type: SEQUENCE SET; Schema: dashboard; Owner: -
 --
 
 SELECT pg_catalog.setval('sys_log_id_seq', 1, false);
 
 
 --
--- TOC entry 2599 (class 0 OID 16875)
--- Dependencies: 217
--- Data for Name: sys_menu; Type: TABLE DATA; Schema: db_payment; Owner: -
+-- TOC entry 2645 (class 0 OID 17342)
+-- Dependencies: 238
+-- Data for Name: sys_menu; Type: TABLE DATA; Schema: dashboard; Owner: -
 --
 
-INSERT INTO sys_menu (id, id_induk, menu, uri, urutan, status, icon) VALUES (43, 0, 'db_payment', 'home', 1, 1, 'desktop');
+INSERT INTO sys_menu (id, id_induk, menu, uri, urutan, status, icon) VALUES (43, 0, 'Dashboard', 'home', 1, 1, 'desktop');
 INSERT INTO sys_menu (id, id_induk, menu, uri, urutan, status, icon) VALUES (44, 0, 'Setting', 'setting/menu', 2, 1, 'cogs');
 INSERT INTO sys_menu (id, id_induk, menu, uri, urutan, status, icon) VALUES (45, 44, 'Menu', 'setting/menu', 1, 1, NULL);
 INSERT INTO sys_menu (id, id_induk, menu, uri, urutan, status, icon) VALUES (46, 44, 'User', 'setting/user', 2, 1, NULL);
@@ -2257,40 +2303,40 @@ INSERT INTO sys_menu (id, id_induk, menu, uri, urutan, status, icon) VALUES (64,
 INSERT INTO sys_menu (id, id_induk, menu, uri, urutan, status, icon) VALUES (65, 64, 'Area Petugas', 'petugas/area_petugas', 1, 0, '');
 INSERT INTO sys_menu (id, id_induk, menu, uri, urutan, status, icon) VALUES (63, 49, 'Area / Blok', 'datamaster/area', 6, 1, '');
 INSERT INTO sys_menu (id, id_induk, menu, uri, urutan, status, icon) VALUES (66, 64, 'Petugas Catat Meter', 'petugas/petugas', 1, 1, '');
-INSERT INTO sys_menu (id, id_induk, menu, uri, urutan, status, icon) VALUES (67, 0, 'Report', 'report', 7, 1, 'db_payment');
+INSERT INTO sys_menu (id, id_induk, menu, uri, urutan, status, icon) VALUES (67, 0, 'Report', 'report', 7, 1, 'dashboard');
 
 
 --
--- TOC entry 2669 (class 0 OID 0)
--- Dependencies: 218
--- Name: sys_menu_id_seq; Type: SEQUENCE SET; Schema: db_payment; Owner: -
+-- TOC entry 2703 (class 0 OID 0)
+-- Dependencies: 239
+-- Name: sys_menu_id_seq; Type: SEQUENCE SET; Schema: dashboard; Owner: -
 --
 
 SELECT pg_catalog.setval('sys_menu_id_seq', 67, true);
 
 
 --
--- TOC entry 2601 (class 0 OID 16883)
--- Dependencies: 219
--- Data for Name: sys_user; Type: TABLE DATA; Schema: db_payment; Owner: -
+-- TOC entry 2647 (class 0 OID 17350)
+-- Dependencies: 240
+-- Data for Name: sys_user; Type: TABLE DATA; Schema: dashboard; Owner: -
 --
 
 INSERT INTO sys_user (id, id_grup_user, username, userpassword, nama, status, poto, tanda_tangan) VALUES (45, 8, 'yoog', '$1$aA3mEmw0$VPbRBTyF8vIWOJ9.qELPR0', 'Yoga Mahendra', 1, NULL, NULL);
 
 
 --
--- TOC entry 2670 (class 0 OID 0)
--- Dependencies: 220
--- Name: sys_user_id_seq; Type: SEQUENCE SET; Schema: db_payment; Owner: -
+-- TOC entry 2704 (class 0 OID 0)
+-- Dependencies: 241
+-- Name: sys_user_id_seq; Type: SEQUENCE SET; Schema: dashboard; Owner: -
 --
 
 SELECT pg_catalog.setval('sys_user_id_seq', 45, true);
 
 
 --
--- TOC entry 2604 (class 0 OID 16972)
--- Dependencies: 222
--- Data for Name: tes; Type: TABLE DATA; Schema: db_payment; Owner: -
+-- TOC entry 2649 (class 0 OID 17360)
+-- Dependencies: 242
+-- Data for Name: tes; Type: TABLE DATA; Schema: dashboard; Owner: -
 --
 
 INSERT INTO tes (id, data) VALUES (1, '{"guid": "9c36adc1-7fb5-4d5b-83b4-90356a46061a", "name": "Angela Barton", "tags": ["enim", "aliquip", "qui"], "address": "178 Howard Place, Gulf, Washington, 702", "company": "Magnafone", "latitude": 19.793713, "is_active": true, "longitude": 86.513373, "registered": "2009-11-07T08:53:22 +08:00"}');
@@ -2301,17 +2347,17 @@ INSERT INTO tes (id, data) VALUES (5, '{"tes": "tes"}');
 
 
 --
--- TOC entry 2671 (class 0 OID 0)
--- Dependencies: 221
--- Name: tes_id_seq; Type: SEQUENCE SET; Schema: db_payment; Owner: -
+-- TOC entry 2705 (class 0 OID 0)
+-- Dependencies: 243
+-- Name: tes_id_seq; Type: SEQUENCE SET; Schema: dashboard; Owner: -
 --
 
 SELECT pg_catalog.setval('tes_id_seq', 5, true);
 
 
 --
--- TOC entry 2428 (class 2606 OID 17108)
--- Name: area_petugas area_petugas_id_pk; Type: CONSTRAINT; Schema: db_payment; Owner: -
+-- TOC entry 2421 (class 2606 OID 17397)
+-- Name: area_petugas_id_pk; Type: CONSTRAINT; Schema: dashboard; Owner: -; Tablespace: 
 --
 
 ALTER TABLE ONLY area_petugas
@@ -2319,8 +2365,8 @@ ALTER TABLE ONLY area_petugas
 
 
 --
--- TOC entry 2439 (class 2606 OID 25489)
--- Name: item_pembayaran item_pembayaran_pk; Type: CONSTRAINT; Schema: db_payment; Owner: -
+-- TOC entry 2424 (class 2606 OID 17399)
+-- Name: item_pembayaran_pk; Type: CONSTRAINT; Schema: dashboard; Owner: -; Tablespace: 
 --
 
 ALTER TABLE ONLY item_pembayaran
@@ -2328,8 +2374,8 @@ ALTER TABLE ONLY item_pembayaran
 
 
 --
--- TOC entry 2434 (class 2606 OID 17191)
--- Name: item_tagihan_non_rutin item_tagihan_non_rutin_pk; Type: CONSTRAINT; Schema: db_payment; Owner: -
+-- TOC entry 2428 (class 2606 OID 17401)
+-- Name: item_tagihan_non_rutin_pk; Type: CONSTRAINT; Schema: dashboard; Owner: -; Tablespace: 
 --
 
 ALTER TABLE ONLY item_tagihan_non_rutin
@@ -2337,8 +2383,8 @@ ALTER TABLE ONLY item_tagihan_non_rutin
 
 
 --
--- TOC entry 2386 (class 2606 OID 16913)
--- Name: item_tagihan item_tagihan_pk; Type: CONSTRAINT; Schema: db_payment; Owner: -
+-- TOC entry 2426 (class 2606 OID 17403)
+-- Name: item_tagihan_pk; Type: CONSTRAINT; Schema: dashboard; Owner: -; Tablespace: 
 --
 
 ALTER TABLE ONLY item_tagihan
@@ -2346,8 +2392,8 @@ ALTER TABLE ONLY item_tagihan
 
 
 --
--- TOC entry 2388 (class 2606 OID 16915)
--- Name: mt_item_tarif mt_item_tarif_pk; Type: CONSTRAINT; Schema: db_payment; Owner: -
+-- TOC entry 2432 (class 2606 OID 17405)
+-- Name: mt_item_tarif_pk; Type: CONSTRAINT; Schema: dashboard; Owner: -; Tablespace: 
 --
 
 ALTER TABLE ONLY mt_item_tarif
@@ -2355,8 +2401,8 @@ ALTER TABLE ONLY mt_item_tarif
 
 
 --
--- TOC entry 2390 (class 2606 OID 16917)
--- Name: mt_item_tarif_referensi mt_item_tarif_referensi_pk; Type: CONSTRAINT; Schema: db_payment; Owner: -
+-- TOC entry 2434 (class 2606 OID 17407)
+-- Name: mt_item_tarif_referensi_pk; Type: CONSTRAINT; Schema: dashboard; Owner: -; Tablespace: 
 --
 
 ALTER TABLE ONLY mt_item_tarif_referensi
@@ -2364,8 +2410,8 @@ ALTER TABLE ONLY mt_item_tarif_referensi
 
 
 --
--- TOC entry 2392 (class 2606 OID 16919)
--- Name: mt_tarif mt_tarif_id_pk; Type: CONSTRAINT; Schema: db_payment; Owner: -
+-- TOC entry 2436 (class 2606 OID 17409)
+-- Name: mt_tarif_id_pk; Type: CONSTRAINT; Schema: dashboard; Owner: -; Tablespace: 
 --
 
 ALTER TABLE ONLY mt_tarif
@@ -2373,8 +2419,8 @@ ALTER TABLE ONLY mt_tarif
 
 
 --
--- TOC entry 2394 (class 2606 OID 16921)
--- Name: mt_tipe_pelanggan mt_tipe_pelanggan_id_pk; Type: CONSTRAINT; Schema: db_payment; Owner: -
+-- TOC entry 2438 (class 2606 OID 17411)
+-- Name: mt_tipe_pelanggan_id_pk; Type: CONSTRAINT; Schema: dashboard; Owner: -; Tablespace: 
 --
 
 ALTER TABLE ONLY mt_tipe_pelanggan
@@ -2382,8 +2428,8 @@ ALTER TABLE ONLY mt_tipe_pelanggan
 
 
 --
--- TOC entry 2424 (class 2606 OID 17062)
--- Name: mt_area mtareaidpk; Type: CONSTRAINT; Schema: db_payment; Owner: -
+-- TOC entry 2430 (class 2606 OID 17413)
+-- Name: mtareaidpk; Type: CONSTRAINT; Schema: dashboard; Owner: -; Tablespace: 
 --
 
 ALTER TABLE ONLY mt_area
@@ -2391,8 +2437,8 @@ ALTER TABLE ONLY mt_area
 
 
 --
--- TOC entry 2397 (class 2606 OID 16923)
--- Name: pelanggan pelanggan_id_pk; Type: CONSTRAINT; Schema: db_payment; Owner: -
+-- TOC entry 2441 (class 2606 OID 17415)
+-- Name: pelanggan_id_pk; Type: CONSTRAINT; Schema: dashboard; Owner: -; Tablespace: 
 --
 
 ALTER TABLE ONLY pelanggan
@@ -2400,8 +2446,8 @@ ALTER TABLE ONLY pelanggan
 
 
 --
--- TOC entry 2399 (class 2606 OID 25403)
--- Name: pelanggan pelanggan_no_reff1_unique; Type: CONSTRAINT; Schema: db_payment; Owner: -
+-- TOC entry 2443 (class 2606 OID 17417)
+-- Name: pelanggan_no_reff1_unique; Type: CONSTRAINT; Schema: dashboard; Owner: -; Tablespace: 
 --
 
 ALTER TABLE ONLY pelanggan
@@ -2409,8 +2455,8 @@ ALTER TABLE ONLY pelanggan
 
 
 --
--- TOC entry 2401 (class 2606 OID 25405)
--- Name: pelanggan pelanggan_no_reff2_unique; Type: CONSTRAINT; Schema: db_payment; Owner: -
+-- TOC entry 2445 (class 2606 OID 17419)
+-- Name: pelanggan_no_reff2_unique; Type: CONSTRAINT; Schema: dashboard; Owner: -; Tablespace: 
 --
 
 ALTER TABLE ONLY pelanggan
@@ -2418,8 +2464,8 @@ ALTER TABLE ONLY pelanggan
 
 
 --
--- TOC entry 2404 (class 2606 OID 16925)
--- Name: pemakaian pemakaian_id_pk; Type: CONSTRAINT; Schema: db_payment; Owner: -
+-- TOC entry 2448 (class 2606 OID 17421)
+-- Name: pemakaian_id_pk; Type: CONSTRAINT; Schema: dashboard; Owner: -; Tablespace: 
 --
 
 ALTER TABLE ONLY pemakaian
@@ -2427,8 +2473,8 @@ ALTER TABLE ONLY pemakaian
 
 
 --
--- TOC entry 2406 (class 2606 OID 16927)
--- Name: pembayaran pembayaran_id_pk; Type: CONSTRAINT; Schema: db_payment; Owner: -
+-- TOC entry 2450 (class 2606 OID 17423)
+-- Name: pembayaran_id_pk; Type: CONSTRAINT; Schema: dashboard; Owner: -; Tablespace: 
 --
 
 ALTER TABLE ONLY pembayaran
@@ -2436,8 +2482,8 @@ ALTER TABLE ONLY pembayaran
 
 
 --
--- TOC entry 2426 (class 2606 OID 17098)
--- Name: petugas petugas_id_pk; Type: CONSTRAINT; Schema: db_payment; Owner: -
+-- TOC entry 2453 (class 2606 OID 17425)
+-- Name: petugas_id_pk; Type: CONSTRAINT; Schema: dashboard; Owner: -; Tablespace: 
 --
 
 ALTER TABLE ONLY petugas
@@ -2445,8 +2491,8 @@ ALTER TABLE ONLY petugas
 
 
 --
--- TOC entry 2411 (class 2606 OID 16929)
--- Name: sys_grup_akses pk_sys_grup_akses; Type: CONSTRAINT; Schema: db_payment; Owner: -
+-- TOC entry 2463 (class 2606 OID 17427)
+-- Name: pk_sys_grup_akses; Type: CONSTRAINT; Schema: dashboard; Owner: -; Tablespace: 
 --
 
 ALTER TABLE ONLY sys_grup_akses
@@ -2454,8 +2500,8 @@ ALTER TABLE ONLY sys_grup_akses
 
 
 --
--- TOC entry 2413 (class 2606 OID 16931)
--- Name: sys_grup_user pk_sys_grup_user; Type: CONSTRAINT; Schema: db_payment; Owner: -
+-- TOC entry 2465 (class 2606 OID 17429)
+-- Name: pk_sys_grup_user; Type: CONSTRAINT; Schema: dashboard; Owner: -; Tablespace: 
 --
 
 ALTER TABLE ONLY sys_grup_user
@@ -2463,8 +2509,8 @@ ALTER TABLE ONLY sys_grup_user
 
 
 --
--- TOC entry 2415 (class 2606 OID 16933)
--- Name: sys_log pk_sys_log; Type: CONSTRAINT; Schema: db_payment; Owner: -
+-- TOC entry 2467 (class 2606 OID 17431)
+-- Name: pk_sys_log; Type: CONSTRAINT; Schema: dashboard; Owner: -; Tablespace: 
 --
 
 ALTER TABLE ONLY sys_log
@@ -2472,8 +2518,8 @@ ALTER TABLE ONLY sys_log
 
 
 --
--- TOC entry 2419 (class 2606 OID 16935)
--- Name: sys_user pk_sys_user; Type: CONSTRAINT; Schema: db_payment; Owner: -
+-- TOC entry 2471 (class 2606 OID 17433)
+-- Name: pk_sys_user; Type: CONSTRAINT; Schema: dashboard; Owner: -; Tablespace: 
 --
 
 ALTER TABLE ONLY sys_user
@@ -2481,8 +2527,8 @@ ALTER TABLE ONLY sys_user
 
 
 --
--- TOC entry 2436 (class 2606 OID 25424)
--- Name: rpt_telat rpt_telat_id_pk; Type: CONSTRAINT; Schema: db_payment; Owner: -
+-- TOC entry 2455 (class 2606 OID 17435)
+-- Name: rpt_telat_id_pk; Type: CONSTRAINT; Schema: dashboard; Owner: -; Tablespace: 
 --
 
 ALTER TABLE ONLY rpt_telat
@@ -2490,8 +2536,8 @@ ALTER TABLE ONLY rpt_telat
 
 
 --
--- TOC entry 2432 (class 2606 OID 17174)
--- Name: sch_generate_denda sch_generate_denda_id_pk; Type: CONSTRAINT; Schema: db_payment; Owner: -
+-- TOC entry 2457 (class 2606 OID 17437)
+-- Name: sch_generate_denda_id_pk; Type: CONSTRAINT; Schema: dashboard; Owner: -; Tablespace: 
 --
 
 ALTER TABLE ONLY sch_generate_denda
@@ -2499,8 +2545,8 @@ ALTER TABLE ONLY sch_generate_denda
 
 
 --
--- TOC entry 2430 (class 2606 OID 17147)
--- Name: sch_generate_tagihan sch_generate_tagihan_id_pk; Type: CONSTRAINT; Schema: db_payment; Owner: -
+-- TOC entry 2459 (class 2606 OID 17439)
+-- Name: sch_generate_tagihan_id_pk; Type: CONSTRAINT; Schema: dashboard; Owner: -; Tablespace: 
 --
 
 ALTER TABLE ONLY sch_generate_tagihan
@@ -2508,8 +2554,17 @@ ALTER TABLE ONLY sch_generate_tagihan
 
 
 --
--- TOC entry 2409 (class 2606 OID 16937)
--- Name: sys_config sys_config_pk; Type: CONSTRAINT; Schema: db_payment; Owner: -
+-- TOC entry 2476 (class 2606 OID 17537)
+-- Name: sync_pemakaian_id_pk; Type: CONSTRAINT; Schema: dashboard; Owner: -; Tablespace: 
+--
+
+ALTER TABLE ONLY sync_pemakaian
+    ADD CONSTRAINT sync_pemakaian_id_pk PRIMARY KEY (id);
+
+
+--
+-- TOC entry 2461 (class 2606 OID 17441)
+-- Name: sys_config_pk; Type: CONSTRAINT; Schema: dashboard; Owner: -; Tablespace: 
 --
 
 ALTER TABLE ONLY sys_config
@@ -2517,8 +2572,8 @@ ALTER TABLE ONLY sys_config
 
 
 --
--- TOC entry 2417 (class 2606 OID 16939)
--- Name: sys_menu sys_menu_id_pk; Type: CONSTRAINT; Schema: db_payment; Owner: -
+-- TOC entry 2469 (class 2606 OID 17443)
+-- Name: sys_menu_id_pk; Type: CONSTRAINT; Schema: dashboard; Owner: -; Tablespace: 
 --
 
 ALTER TABLE ONLY sys_menu
@@ -2526,8 +2581,8 @@ ALTER TABLE ONLY sys_menu
 
 
 --
--- TOC entry 2422 (class 2606 OID 16980)
--- Name: tes tes_pkey; Type: CONSTRAINT; Schema: db_payment; Owner: -
+-- TOC entry 2474 (class 2606 OID 17445)
+-- Name: tes_pkey; Type: CONSTRAINT; Schema: dashboard; Owner: -; Tablespace: 
 --
 
 ALTER TABLE ONLY tes
@@ -2535,96 +2590,96 @@ ALTER TABLE ONLY tes
 
 
 --
--- TOC entry 2437 (class 1259 OID 25495)
--- Name: fki_item_pembayaran_pembayaran_id_pembayaran_fk; Type: INDEX; Schema: db_payment; Owner: -
+-- TOC entry 2422 (class 1259 OID 17446)
+-- Name: fki_item_pembayaran_pembayaran_id_pembayaran_fk; Type: INDEX; Schema: dashboard; Owner: -; Tablespace: 
 --
 
 CREATE INDEX fki_item_pembayaran_pembayaran_id_pembayaran_fk ON item_pembayaran USING btree (id_pembayaran);
 
 
 --
--- TOC entry 2395 (class 1259 OID 17068)
--- Name: fki_pelanggan_mt_area_id_area_fk; Type: INDEX; Schema: db_payment; Owner: -
+-- TOC entry 2439 (class 1259 OID 17447)
+-- Name: fki_pelanggan_mt_area_id_area_fk; Type: INDEX; Schema: dashboard; Owner: -; Tablespace: 
 --
 
 CREATE INDEX fki_pelanggan_mt_area_id_area_fk ON pelanggan USING btree (id_area);
 
 
 --
--- TOC entry 2420 (class 1259 OID 16981)
--- Name: lala_idx; Type: INDEX; Schema: db_payment; Owner: -
+-- TOC entry 2472 (class 1259 OID 17448)
+-- Name: lala_idx; Type: INDEX; Schema: dashboard; Owner: -; Tablespace: 
 --
 
 CREATE INDEX lala_idx ON tes USING gin (data);
 
 
 --
--- TOC entry 2402 (class 1259 OID 25401)
--- Name: pelanggan_noreff_idx; Type: INDEX; Schema: db_payment; Owner: -
+-- TOC entry 2446 (class 1259 OID 17449)
+-- Name: pelanggan_noreff_idx; Type: INDEX; Schema: dashboard; Owner: -; Tablespace: 
 --
 
 CREATE INDEX pelanggan_noreff_idx ON pelanggan USING btree (no_reff1, no_reff2);
 
 
 --
--- TOC entry 2407 (class 1259 OID 17023)
--- Name: pembayaran_item_tagihan_idx; Type: INDEX; Schema: db_payment; Owner: -
+-- TOC entry 2451 (class 1259 OID 17450)
+-- Name: pembayaran_item_tagihan_idx; Type: INDEX; Schema: dashboard; Owner: -; Tablespace: 
 --
 
 CREATE INDEX pembayaran_item_tagihan_idx ON pembayaran USING gin (item_tagihan jsonb_path_ops);
 
 
 --
--- TOC entry 2452 (class 2620 OID 16940)
--- Name: sys_grup_user trg_grup_user_set_grup_akses; Type: TRIGGER; Schema: db_payment; Owner: -
+-- TOC entry 2492 (class 2620 OID 17451)
+-- Name: trg_grup_user_set_grup_akses; Type: TRIGGER; Schema: dashboard; Owner: -
 --
 
 CREATE TRIGGER trg_grup_user_set_grup_akses AFTER INSERT ON sys_grup_user FOR EACH ROW EXECUTE PROCEDURE fn_trg_grup_user_set_grup_akses();
 
 
 --
--- TOC entry 2453 (class 2620 OID 16941)
--- Name: sys_menu trg_menu_set_grup_akses; Type: TRIGGER; Schema: db_payment; Owner: -
+-- TOC entry 2493 (class 2620 OID 17452)
+-- Name: trg_menu_set_grup_akses; Type: TRIGGER; Schema: dashboard; Owner: -
 --
 
 CREATE TRIGGER trg_menu_set_grup_akses AFTER INSERT ON sys_menu FOR EACH ROW EXECUTE PROCEDURE fn_trg_menu_set_grup_akses();
 
 
 --
--- TOC entry 2451 (class 2620 OID 16942)
--- Name: pemakaian trg_pemakaian_hitung_pemakaian; Type: TRIGGER; Schema: db_payment; Owner: -
+-- TOC entry 2489 (class 2620 OID 17453)
+-- Name: trg_pemakaian_hitung_pemakaian; Type: TRIGGER; Schema: dashboard; Owner: -
 --
 
 CREATE TRIGGER trg_pemakaian_hitung_pemakaian BEFORE INSERT OR UPDATE OF meter_akhir ON pemakaian FOR EACH ROW EXECUTE PROCEDURE fn_trg_hitung_pemakaian();
 
 
 --
--- TOC entry 2455 (class 2620 OID 17120)
--- Name: petugas trg_petugas_set_password; Type: TRIGGER; Schema: db_payment; Owner: -
+-- TOC entry 2490 (class 2620 OID 17454)
+-- Name: trg_petugas_set_password; Type: TRIGGER; Schema: dashboard; Owner: -
 --
 
 CREATE TRIGGER trg_petugas_set_password BEFORE INSERT OR UPDATE OF userpassword ON petugas FOR EACH ROW EXECUTE PROCEDURE fn_trg_petugas_set_password();
 
 
 --
--- TOC entry 2454 (class 2620 OID 16943)
--- Name: sys_user trg_user_set_password_before_insert_update; Type: TRIGGER; Schema: db_payment; Owner: -
+-- TOC entry 2494 (class 2620 OID 17455)
+-- Name: trg_user_set_password_before_insert_update; Type: TRIGGER; Schema: dashboard; Owner: -
 --
 
 CREATE TRIGGER trg_user_set_password_before_insert_update BEFORE INSERT OR UPDATE ON sys_user FOR EACH ROW EXECUTE PROCEDURE fn_trg_user_set_password();
 
 
 --
--- TOC entry 2456 (class 2620 OID 25471)
--- Name: sch_generate_tagihan validate_before_insert; Type: TRIGGER; Schema: db_payment; Owner: -
+-- TOC entry 2491 (class 2620 OID 17456)
+-- Name: validate_before_insert; Type: TRIGGER; Schema: dashboard; Owner: -
 --
 
 CREATE TRIGGER validate_before_insert BEFORE INSERT ON sch_generate_tagihan FOR EACH ROW EXECUTE PROCEDURE fn_trg_validate_insert_antrian();
 
 
 --
--- TOC entry 2447 (class 2606 OID 17114)
--- Name: area_petugas areapetugasareaidareafk; Type: FK CONSTRAINT; Schema: db_payment; Owner: -
+-- TOC entry 2477 (class 2606 OID 17457)
+-- Name: areapetugasareaidareafk; Type: FK CONSTRAINT; Schema: dashboard; Owner: -
 --
 
 ALTER TABLE ONLY area_petugas
@@ -2632,8 +2687,8 @@ ALTER TABLE ONLY area_petugas
 
 
 --
--- TOC entry 2446 (class 2606 OID 17109)
--- Name: area_petugas areapetugaspetugasidpetugasfk; Type: FK CONSTRAINT; Schema: db_payment; Owner: -
+-- TOC entry 2478 (class 2606 OID 17462)
+-- Name: areapetugaspetugasidpetugasfk; Type: FK CONSTRAINT; Schema: dashboard; Owner: -
 --
 
 ALTER TABLE ONLY area_petugas
@@ -2641,8 +2696,8 @@ ALTER TABLE ONLY area_petugas
 
 
 --
--- TOC entry 2445 (class 2606 OID 16944)
--- Name: sys_user fk_sys_user_reference_sys_grup; Type: FK CONSTRAINT; Schema: db_payment; Owner: -
+-- TOC entry 2487 (class 2606 OID 17467)
+-- Name: fk_sys_user_reference_sys_grup; Type: FK CONSTRAINT; Schema: dashboard; Owner: -
 --
 
 ALTER TABLE ONLY sys_user
@@ -2650,8 +2705,8 @@ ALTER TABLE ONLY sys_user
 
 
 --
--- TOC entry 2450 (class 2606 OID 25490)
--- Name: item_pembayaran item_pembayaran_pembayaran_id_pembayaran_fk; Type: FK CONSTRAINT; Schema: db_payment; Owner: -
+-- TOC entry 2479 (class 2606 OID 17472)
+-- Name: item_pembayaran_pembayaran_id_pembayaran_fk; Type: FK CONSTRAINT; Schema: dashboard; Owner: -
 --
 
 ALTER TABLE ONLY item_pembayaran
@@ -2659,8 +2714,8 @@ ALTER TABLE ONLY item_pembayaran
 
 
 --
--- TOC entry 2440 (class 2606 OID 16949)
--- Name: mt_tarif mt_tarif_mt_tipe_pelanggan_id_tipe_pelanggan_fk; Type: FK CONSTRAINT; Schema: db_payment; Owner: -
+-- TOC entry 2480 (class 2606 OID 17477)
+-- Name: mt_tarif_mt_tipe_pelanggan_id_tipe_pelanggan_fk; Type: FK CONSTRAINT; Schema: dashboard; Owner: -
 --
 
 ALTER TABLE ONLY mt_tarif
@@ -2668,8 +2723,8 @@ ALTER TABLE ONLY mt_tarif
 
 
 --
--- TOC entry 2442 (class 2606 OID 17063)
--- Name: pelanggan pelanggan_mt_area_id_area_fk; Type: FK CONSTRAINT; Schema: db_payment; Owner: -
+-- TOC entry 2481 (class 2606 OID 17482)
+-- Name: pelanggan_mt_area_id_area_fk; Type: FK CONSTRAINT; Schema: dashboard; Owner: -
 --
 
 ALTER TABLE ONLY pelanggan
@@ -2677,8 +2732,8 @@ ALTER TABLE ONLY pelanggan
 
 
 --
--- TOC entry 2441 (class 2606 OID 16954)
--- Name: pelanggan pelanggan_mt_tipe_pelanggan_id_tipe_pelanggan_fk; Type: FK CONSTRAINT; Schema: db_payment; Owner: -
+-- TOC entry 2482 (class 2606 OID 17487)
+-- Name: pelanggan_mt_tipe_pelanggan_id_tipe_pelanggan_fk; Type: FK CONSTRAINT; Schema: dashboard; Owner: -
 --
 
 ALTER TABLE ONLY pelanggan
@@ -2686,8 +2741,8 @@ ALTER TABLE ONLY pelanggan
 
 
 --
--- TOC entry 2449 (class 2606 OID 17175)
--- Name: sch_generate_denda sch_generate_denda_pelanggan_id_pelanggan_fk; Type: FK CONSTRAINT; Schema: db_payment; Owner: -
+-- TOC entry 2483 (class 2606 OID 17492)
+-- Name: sch_generate_denda_pelanggan_id_pelanggan_fk; Type: FK CONSTRAINT; Schema: dashboard; Owner: -
 --
 
 ALTER TABLE ONLY sch_generate_denda
@@ -2695,8 +2750,8 @@ ALTER TABLE ONLY sch_generate_denda
 
 
 --
--- TOC entry 2448 (class 2606 OID 17148)
--- Name: sch_generate_tagihan sch_generate_tagihan_pelanggan_id_pelanggan_fk; Type: FK CONSTRAINT; Schema: db_payment; Owner: -
+-- TOC entry 2484 (class 2606 OID 17497)
+-- Name: sch_generate_tagihan_pelanggan_id_pelanggan_fk; Type: FK CONSTRAINT; Schema: dashboard; Owner: -
 --
 
 ALTER TABLE ONLY sch_generate_tagihan
@@ -2704,8 +2759,17 @@ ALTER TABLE ONLY sch_generate_tagihan
 
 
 --
--- TOC entry 2443 (class 2606 OID 16959)
--- Name: sys_grup_akses sys_grup_akses_sys_grup_user_id_grup_user_fk; Type: FK CONSTRAINT; Schema: db_payment; Owner: -
+-- TOC entry 2488 (class 2606 OID 17538)
+-- Name: sync_pemakaian_petugas_id_fk; Type: FK CONSTRAINT; Schema: dashboard; Owner: -
+--
+
+ALTER TABLE ONLY sync_pemakaian
+    ADD CONSTRAINT sync_pemakaian_petugas_id_fk FOREIGN KEY (id_petugas) REFERENCES petugas(id) ON DELETE CASCADE;
+
+
+--
+-- TOC entry 2485 (class 2606 OID 17502)
+-- Name: sys_grup_akses_sys_grup_user_id_grup_user_fk; Type: FK CONSTRAINT; Schema: dashboard; Owner: -
 --
 
 ALTER TABLE ONLY sys_grup_akses
@@ -2713,15 +2777,15 @@ ALTER TABLE ONLY sys_grup_akses
 
 
 --
--- TOC entry 2444 (class 2606 OID 16964)
--- Name: sys_grup_akses sys_grup_akses_sys_menu_id_menu_fk; Type: FK CONSTRAINT; Schema: db_payment; Owner: -
+-- TOC entry 2486 (class 2606 OID 17507)
+-- Name: sys_grup_akses_sys_menu_id_menu_fk; Type: FK CONSTRAINT; Schema: dashboard; Owner: -
 --
 
 ALTER TABLE ONLY sys_grup_akses
     ADD CONSTRAINT sys_grup_akses_sys_menu_id_menu_fk FOREIGN KEY (id_menu) REFERENCES sys_menu(id) ON UPDATE RESTRICT ON DELETE CASCADE;
 
 
--- Completed on 2016-08-22 07:18:50
+-- Completed on 2017-01-01 15:37:19 WIB
 
 --
 -- PostgreSQL database dump complete
